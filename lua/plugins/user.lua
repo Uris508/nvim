@@ -24,6 +24,6 @@ if true then
       end,
     },
     {"smartpde/telescope-recent-files"},
-    {'nvim-telescope/telescope-ui-select.nvim' },
+    {"nvim-telescope/telescope-ui-select.nvim"},
   }
 end

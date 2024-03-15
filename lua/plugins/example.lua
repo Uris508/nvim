@@ -1,6 +1,30 @@
 -- since this is just an example spec, don't actually load anything here and return an empty spec
 -- stylua: ignore
-if true then return {} end
+if true then return {
+  -- {
+  --   "nvim-telescope/telescope.nvim",
+  --   dependencies = {
+  --     { 
+  --         "nvim-telescope/telescope-live-grep-args.nvim" ,
+  --       -- This will not install any breaking changes.
+  --       -- For major updates, this must be adjusted manually.
+  --         version = "^1.0.0",
+  --     },
+  --   },
+  --   config = function()
+  --     require("telescope").load_extension("live_grep_args")
+  --   end
+  -- },
+  -- {
+  --   "ibhagwan/fzf-lua",
+  --   -- optional for icon support
+  --   dependencies = { "nvim-tree/nvim-web-devicons" },
+  --   config = function()
+  --   -- calling `setup` is optional for customization
+  --     require("fzf-lua").setup({})
+  --   end
+  -- },
+ } end
 
 -- every spec file under the "plugins" directory will be loaded automatically by lazy.nvim
 --
@@ -63,7 +87,7 @@ return {
     -- change some options
     opts = {
       defaults = {
-        layout_strategy = "horizontal",
+        layout_strategy = "vertical",
         layout_config = { prompt_position = "top" },
         sorting_strategy = "ascending",
         winblend = 0,

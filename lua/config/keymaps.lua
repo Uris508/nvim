@@ -3,9 +3,9 @@
 -- Add any additional keymaps here
 vim.keymap.set("n", "<leader>sg", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
 vim.keymap.set("n", "<c-P>", "<cmd>lua require('fzf-lua').files()<CR>", { silent = true })
-vim.keymap.set("n", "<leader>s/", "<cmd>lua require('fzf-lua').grep()<CR>", { silent = true })
+vim.keymap.set("n", "<leader>s/", "<cmd>lua require('fzf-lua').grep()<CR>", { silent = true , desc = "fzf grep search"})
 vim.api.nvim_set_keymap("n", "<Leader>sb",
   [[<cmd>lua require('telescope').extensions.recent_files.pick()<CR>]],
-  {noremap = true, silent = true})
-vim.keymap.set("n", "<leader>fo", "<cmd>!start %:p:h<CR>", { silent = true })
-vim.keymap.set("n", "<leader>D", "<cmd>Dashboard<CR>", { silent = true })
+  {noremap = true, silent = true, desc = "Buffer list"})
+vim.keymap.set("n", "<leader>fo", "<cmd>!start %:p:h<CR>", { silent = true, desc = "Open file folder" })
+vim.keymap.set("n", "<leader>D", "<cmd>Dashboard<CR>", { silent = true, desc = "open Dashboard" })

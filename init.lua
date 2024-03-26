@@ -35,12 +35,15 @@ require("telescope").setup({
 
 -- flash.nvim
 -- disable search jump
+-- use lowercase label only
 require("flash").setup({
+  label = {
+    uppercase = false,
+  },
   modes = {
     search = {
       enabled = false,
     }, 
   },
 })
-
 

@@ -33,3 +33,14 @@ require("telescope").setup({
   },
 })
 
+-- flash.nvim
+-- disable search jump
+require("flash").setup({
+  modes = {
+    search = {
+      enabled = false,
+    }, 
+  },
+})
+
+

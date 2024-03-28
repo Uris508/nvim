@@ -55,3 +55,16 @@ require("mini.indentscope").setup({
     animation = require("mini.indentscope").gen_animation.none(),
   },
 })
+-- lualine 
+-- do not shorten path
+require('lualine').setup ({
+  sections = {
+    lualine_c = {
+      {
+        'filename',
+        path = 1,
+        show_filename_only = false,
+      },
+    },
+  },
+})

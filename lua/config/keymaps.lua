@@ -9,3 +9,6 @@ vim.api.nvim_set_keymap("n", "<Leader>sb",
   {noremap = true, silent = true, desc = "Buffer list"})
 vim.keymap.set("n", "<leader>fo", "<cmd>!start %:p:h<CR>", { silent = true, desc = "Open file folder" })
 vim.keymap.set("n", "<leader>D", "<cmd>Dashboard<CR>", { silent = true, desc = "open Dashboard" })
+vim.keymap.set("n", "<leader>fp","<cmd>let @+=expand('%')<CR>",{ silent = true, desc = "copy relative Path" })
+vim.keymap.set("n", "<leader>fP","<cmd>let @+=expand('%:p')<CR>",{ silent = true, desc = "copy full Path" })
+vim.keymap.set("n", "<leader>fN","<cmd>let @+=expand('%:t')<CR>",{ silent = true, desc = "copy file name" })

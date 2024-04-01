@@ -12,3 +12,5 @@ vim.keymap.set("n", "<leader>D", "<cmd>Dashboard<CR>", { silent = true, desc = "
 vim.keymap.set("n", "<leader>fp","<cmd>let @+=@%<CR>",{ silent = true, desc = "copy relative Path" })
 vim.keymap.set("n", "<leader>fP","<cmd>let @+=expand('%:p')<CR>",{ silent = true, desc = "copy full Path" })
 vim.keymap.set("n", "<leader>fN","<cmd>let @+=expand('%:t')<CR>",{ silent = true, desc = "copy file name" })
+vim.keymap.set("n", "<leader>ch", "<cmd>%!xxd<CR>", { silent = true, desc = "Change to HEX format" })
+vim.keymap.set("n", "<leader>cH", "<cmd>%!xxd -r<CR>", { silent = true, desc = "Change to ASCII format" })

@@ -4,3 +4,4 @@
 vim.g.autoformat = false
 vim.opt.title = true
 vim.opt.titlestring = [[%{fnamemodify(getcwd(), ':f')}]]
+vim.g.neovide_refresh_rate = 60

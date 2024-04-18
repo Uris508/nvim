@@ -68,3 +68,12 @@ require('lualine').setup ({
     },
   },
 })
+-- aerial
+-- change windows to left
+require("aerial").setup({
+  layout = {
+    default_direction = "prefer_left",
+  },
+})
+-- neoscroll
+require('neoscroll').setup()

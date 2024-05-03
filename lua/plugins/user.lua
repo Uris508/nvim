@@ -20,7 +20,14 @@ if true then
       dependencies = { "nvim-tree/nvim-web-devicons" },
       config = function()
         -- calling `setup` is optional for customization
-        require("fzf-lua").setup({})
+        require("fzf-lua").setup({
+          winopts = {
+            preview = {
+              vertical = 'up',
+            },
+          },
+         preview_layout = 'vertical',
+        })
       end,
     },
     {"smartpde/telescope-recent-files"},

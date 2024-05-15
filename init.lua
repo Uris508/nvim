@@ -5,6 +5,9 @@ require("telescope").load_extension("fzf")
 require("telescope").load_extension("recent_files")
 require("telescope").load_extension("ui-select")
 vim.diagnostic.disable()
+
+local actions = require "telescope.actions"
+
 require("telescope").setup({
   extensions = {
       file_browser = {layout_strategy = "horizontal", sorting_strategy = "ascending"},
@@ -18,7 +21,13 @@ require("telescope").setup({
       layout_config = {vertical = {width = 0.9, height = 0.9, preview_height = 0.6, preview_cutoff = 0}},
       -- path_display = {"smart", shorten = {len = 5}},
       path_display = {"absolute"},
-      scroll_strategy = "limit"
+      scroll_strategy = "limit",
+      mappings = {
+        i = {
+            ["<C-j>"] = actions.move_selection_next,
+            ["<C-k>"] = actions.move_selection_previous,
+        }
+      },
 
   },
   pickers = {

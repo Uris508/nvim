@@ -32,5 +32,16 @@ if true then
     },
     {"smartpde/telescope-recent-files"},
     {"nvim-telescope/telescope-ui-select.nvim"},
+    {
+      "stevearc/oil.nvim",
+      opts = {},
+      -- Optional dependencies
+      dependencies = { "nvim-tree/nvim-web-devicons" },
+      config = function()
+        require("oil").setup({
+          default_file_explorer = true,
+        })
+      end,
+    },
   }
 end

@@ -86,3 +86,5 @@ require("aerial").setup({
 })
 -- neoscroll
 require('neoscroll').setup()
+-- oil.nvim
+require("oil").setup()

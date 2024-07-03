@@ -22,6 +22,23 @@ local function grep_cword()
 end
 vim.keymap.set("n", "<leader>sf", grep_cword, {desc = "Find file under curosr"})
 
+function vim.getVisualSelection()
+	vim.cmd('noau normal! "vy"')
+	local text = vim.fn.getreg('v')
+	vim.fn.setreg('v', {})
+
+	text = string.gsub(text, "\n", "")
+	if #text > 0 then
+		return text
+	else
+		return ''
+	end
+end
+local function grep_vword()
+  return telescopebuiltin.find_files({ default_text = vim.getVisualSelection()})
+end
+vim.keymap.set("v", "<leader>sf", grep_vword, {desc = "Find file for selected"})
+
 local function search_string()
 local input_string = vim.fn.input("Search For > ")
     if (input_string == '') then
@@ -30,4 +47,3 @@ local input_string = vim.fn.input("Search For > ")
     return telescopebuiltin.grep_string({search = input_string,})
 end
 vim.keymap.set("n", "<leader>s/", search_string, { silent = true , desc = "Grep search"})
-

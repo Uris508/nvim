@@ -4,7 +4,7 @@
 vim.keymap.set("n", "<leader>sg", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
 vim.keymap.set("n", "<c-P>", "<cmd>lua require('fzf-lua').files()<CR>", { silent = true })
 vim.keymap.set("n", "<leader>s'", "<cmd>lua require('fzf-lua').live_grep()<CR>", { silent = true })
-vim.keymap.set("n", "<leader>s/", "<cmd>lua require('fzf-lua').grep()<CR>", { silent = true , desc = "fzf grep search"})
+-- vim.keymap.set("n", "<leader>s/", "<cmd>lua require('fzf-lua').grep()<CR>", { silent = true , desc = "fzf grep search"})
 vim.api.nvim_set_keymap("n", "<Leader>sb",
   [[<cmd>lua require('telescope').extensions.recent_files.pick()<CR>]],
   {noremap = true, silent = true, desc = "Buffer list"})
@@ -22,4 +22,12 @@ local function grep_cword()
 end
 vim.keymap.set("n", "<leader>sf", grep_cword, {desc = "Find file under curosr"})
 
+local function search_string()
+local input_string = vim.fn.input("Search For > ")
+    if (input_string == '') then
+      return
+    end
+    return telescopebuiltin.grep_string({search = input_string,})
+end
+vim.keymap.set("n", "<leader>s/", search_string, { silent = true , desc = "Grep search"})
 

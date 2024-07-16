@@ -48,7 +48,7 @@ local input_string = vim.fn.input("Search For > ")
 end
 vim.keymap.set("n", "<leader>s/", search_string, { silent = true , desc = "Grep search"})
 
-local CustomCommentStr
+local CustomCommentStr = ''
 local CustomCommentType
 
 local function SetCustomCommentString()
@@ -88,6 +88,10 @@ end
 
 
 local function CustomCommentStringBlock()
+  if (CustomCommentStr == '') then
+    vim.print("custom comment string is empty")
+    return
+  end
   vim.cmd('normal d')
   
   vim.cmd('normal O')

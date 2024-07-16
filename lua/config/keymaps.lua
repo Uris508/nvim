@@ -52,7 +52,7 @@ local CustomCommentStr = ''
 local CustomCommentType
 
 local function SetCustomCommentString()
-  CustomCommentType = vim.fn.input("Fix/Feature/WA >")
+  CustomCommentType = vim.fn.input("Custom commet for Fix/Feature/WA ?")
   CustomCommentStr = vim.fn.input("Set Commnet string > ")
 end
 

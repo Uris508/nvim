@@ -72,8 +72,46 @@ local function CustomCommentStringEnd()
   vim.cmd('normal gcc')
 end
 
+local function CustomCommnetStringLine()
+  vim.cmd('normal O')
+  local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+  local comment1= "[" .. CustomCommentType .. "] " .. CustomCommentStr .. " >>>"
+  vim.api.nvim_buf_set_text(0, row - 1, col, row - 1, col, { "[uris]" .. comment1 })
+  vim.cmd('normal gcc')
+  vim.cmd('normal j')
+  vim.cmd('normal o')
+  local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+  local comment2= "[" .. CustomCommentType .. "] " .. CustomCommentStr .. " <<<"
+  vim.api.nvim_buf_set_text(0, row - 1, col, row - 1, col, { "[uris]" .. comment2 })
+  vim.cmd('normal gcc')
+end
+
+
+local function CustomCommentStringBlock()
+  vim.cmd('normal d')
+  
+  vim.cmd('normal O')
+  local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+  local comment1= "[" .. CustomCommentType .. "] " .. CustomCommentStr .. " >>>"
+  vim.api.nvim_buf_set_text(0, row - 1, col, row - 1, col, { "[uris]" .. comment1 })
+  vim.cmd('normal o')
+  vim.cmd('normal k')
+  vim.cmd('normal gcc')
+  vim.cmd('normal j')
+  local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+  local comment2= "[" .. CustomCommentType .. "] " .. CustomCommentStr .. " <<<"
+  vim.api.nvim_buf_set_text(0, row - 1, col, row - 1, col, { "[uris]" .. comment2 })
+  vim.cmd('normal gcc')
+
+  vim.cmd('normal k')
+  vim.cmd('normal p')
+  
+end
+
 vim.keymap.set("n", "<leader>cG", SetCustomCommentString, {desc = "Set Custom Comment string"})
 vim.keymap.set("n", "gcb", CustomCommentStringBegin, {desc = "Custom Comment Begin"})
 vim.keymap.set("n", "gce", CustomCommentStringEnd, {desc = "Custom Comment End"})
+vim.keymap.set("n", "gcl", CustomCommnetStringLine, {desc = "Custom Comment Line"})
+vim.keymap.set("v", "gb", CustomCommentStringBlock, {desc = "Custom Comment Block"})
 
 

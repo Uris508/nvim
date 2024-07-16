@@ -57,6 +57,7 @@ local function SetCustomCommentString()
 end
 
 local function CustomCommentStringBegin()
+  vim.cmd('normal O')
   local row, col = unpack(vim.api.nvim_win_get_cursor(0))
   local comment = "[" .. CustomCommentType .. "] " .. CustomCommentStr .. " >>>"
   vim.api.nvim_buf_set_text(0, row - 1, col, row - 1, col, { "[uris]" .. comment })
@@ -64,6 +65,7 @@ local function CustomCommentStringBegin()
 end
 
 local function CustomCommentStringEnd()
+  vim.cmd('normal o')
   local row, col = unpack(vim.api.nvim_win_get_cursor(0))
   local comment = "[" .. CustomCommentType .. "] " .. CustomCommentStr .. " <<<"
   vim.api.nvim_buf_set_text(0, row - 1, col, row - 1, col, { "[uris]" .. comment })
@@ -71,7 +73,7 @@ local function CustomCommentStringEnd()
 end
 
 vim.keymap.set("n", "<leader>cG", SetCustomCommentString, {desc = "Set Custom Comment string"})
-vim.keymap.set("n", "gcb", CustomCommentStringBegin, {desc = "Custom Comment string"})
-vim.keymap.set("n", "gce", CustomCommentStringEnd, {desc = "Custom Comment string"})
+vim.keymap.set("n", "gcb", CustomCommentStringBegin, {desc = "Custom Comment Begin"})
+vim.keymap.set("n", "gce", CustomCommentStringEnd, {desc = "Custom Comment End"})
 
 

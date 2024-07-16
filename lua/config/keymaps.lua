@@ -47,3 +47,31 @@ local input_string = vim.fn.input("Search For > ")
     return telescopebuiltin.grep_string({search = input_string,})
 end
 vim.keymap.set("n", "<leader>s/", search_string, { silent = true , desc = "Grep search"})
+
+local CustomCommentStr
+local CustomCommentType
+
+local function SetCustomCommentString()
+  CustomCommentType = vim.fn.input("Fix/Feature/WA >")
+  CustomCommentStr = vim.fn.input("Set Commnet string > ")
+end
+
+local function CustomCommentStringBegin()
+  local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+  local comment = "[" .. CustomCommentType .. "] " .. CustomCommentStr .. " >>>"
+  vim.api.nvim_buf_set_text(0, row - 1, col, row - 1, col, { "[uris]" .. comment })
+  vim.cmd('normal gcc')
+end
+
+local function CustomCommentStringEnd()
+  local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+  local comment = "[" .. CustomCommentType .. "] " .. CustomCommentStr .. " <<<"
+  vim.api.nvim_buf_set_text(0, row - 1, col, row - 1, col, { "[uris]" .. comment })
+  vim.cmd('normal gcc')
+end
+
+vim.keymap.set("n", "<leader>cG", SetCustomCommentString, {desc = "Set Custom Comment string"})
+vim.keymap.set("n", "gcb", CustomCommentStringBegin, {desc = "Custom Comment string"})
+vim.keymap.set("n", "gce", CustomCommentStringEnd, {desc = "Custom Comment string"})
+
+

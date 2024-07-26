@@ -1,10 +1,11 @@
 {
   "extras": [
     "lazyvim.plugins.extras.coding.yanky",
-    "lazyvim.plugins.extras.editor.aerial"
+    "lazyvim.plugins.extras.editor.aerial",
+    "lazyvim.plugins.extras.editor.fzf"
   ],
   "news": {
-    "NEWS.md": "5114"
+    "NEWS.md": "6707"
   },
-  "version": 5
+  "version": 6
 }

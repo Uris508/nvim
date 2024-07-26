@@ -3,7 +3,7 @@
 -- Add any additional keymaps here
 -- vim.keymap.set("n", "<leader>sg", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
 -- vim.keymap.set("n", "<c-P>", "<cmd>lua require('fzf-lua').files()<CR>", { silent = true })
-vim.keymap.set("n", "<leader>s'", "<cmd>lua require('fzf-lua').live_grep_glob()<CR>", { silent = true, desc ="live grep glob" })
+vim.keymap.set("n", "<leader>sg", "<cmd>lua require('fzf-lua').live_grep_glob()<CR>", { silent = true, desc ="live grep glob" })
 -- vim.keymap.set("n", "<leader>s/", "<cmd>lua require('fzf-lua').grep()<CR>", { silent = true , desc = "fzf grep search"})
 vim.api.nvim_set_keymap("n", "<Leader>sb",
   [[<cmd>lua require('telescope').extensions.recent_files.pick()<CR>]],

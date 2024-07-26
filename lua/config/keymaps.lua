@@ -1,9 +1,9 @@
 -- Keymaps are automatically loaded on the VeryLazy event
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
-vim.keymap.set("n", "<leader>sg", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
-vim.keymap.set("n", "<c-P>", "<cmd>lua require('fzf-lua').files()<CR>", { silent = true })
-vim.keymap.set("n", "<leader>s'", "<cmd>lua require('fzf-lua').live_grep()<CR>", { silent = true })
+-- vim.keymap.set("n", "<leader>sg", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
+-- vim.keymap.set("n", "<c-P>", "<cmd>lua require('fzf-lua').files()<CR>", { silent = true })
+vim.keymap.set("n", "<leader>s'", "<cmd>lua require('fzf-lua').live_grep_glob()<CR>", { silent = true, desc ="live grep glob" })
 -- vim.keymap.set("n", "<leader>s/", "<cmd>lua require('fzf-lua').grep()<CR>", { silent = true , desc = "fzf grep search"})
 vim.api.nvim_set_keymap("n", "<Leader>sb",
   [[<cmd>lua require('telescope').extensions.recent_files.pick()<CR>]],
@@ -19,7 +19,7 @@ vim.keymap.set("n", "<leader>o", "<CMD>Oil<CR>", { desc = "Open Oil.nvim" })
 vim.keymap.set("n", "c", "\"_c", { desc = "Open Oil.nvim" })
 local telescopebuiltin = require("telescope.builtin")
 local function grep_cword()
-  return telescopebuiltin.find_files({ default_text = vim.fn.expand('<cword>')})
+  return telescopebuiltin.find_files({ default_text = "'" .. vim.fn.expand('<cword>')})
 end
 vim.keymap.set("n", "<leader>sf", grep_cword, {desc = "Find file under curosr"})
 
@@ -36,7 +36,7 @@ function vim.getVisualSelection()
 	end
 end
 local function grep_vword()
-  return telescopebuiltin.find_files({ default_text = vim.getVisualSelection()})
+  return telescopebuiltin.find_files({ default_text = "'" .. vim.getVisualSelection()})
 end
 vim.keymap.set("v", "<leader>sf", grep_vword, {desc = "Find file for selected"})
 

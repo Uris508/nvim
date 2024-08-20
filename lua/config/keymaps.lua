@@ -49,6 +49,13 @@ local input_string = vim.fn.input("Search For > ")
 end
 vim.keymap.set("n", "<leader>s/", search_string, { silent = true , desc = "Grep search"})
 
+
+-- vim.keymap.set("n", "<leader>fN","<cmd>let @+=expand('%:t')<CR>",{ silent = true, desc = "Copy file name" })
+local function search_current_buffer_name()
+  return telescopebuiltin.find_files({ default_text = vim.fn.expand("%:t")})
+end
+vim.keymap.set("n", "<leader>sF",search_current_buffer_name,{ silent = true, desc = "Search current buffer file name" })
+
 local CustomCommentStr = ''
 local CustomCommentType
 

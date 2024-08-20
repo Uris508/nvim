@@ -51,7 +51,7 @@ vim.keymap.set("n", "<leader>s/", search_string, { silent = true , desc = "Grep 
 
 
 local function search_current_buffer_name()
-  return telescopebuiltin.find_files({ default_text = vim.fn.expand("%:t")})
+  return telescopebuiltin.live_grep({ default_text = vim.fn.expand("%:t")})
 end
 vim.keymap.set("n", "<leader>sB",search_current_buffer_name,{ silent = true, desc = "Search current buffer file name" })
 

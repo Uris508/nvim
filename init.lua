@@ -4,6 +4,23 @@ require("config.lazy")
 require("telescope").load_extension("fzf")
 require("telescope").load_extension("recent_files")
 require("telescope").load_extension("ui-select")
+
+
+local function charinput()
+	return '<C-\\><C-N>"' .. vim.fn.nr2char(vim.fn.getchar()) .. 'pi'
+end
+vim.keymap.set('t', '<C-R>', charinput, { expr = true })
+if vim.g.neovide then
+  vim.keymap.set('n', '<c-s>', ':w<CR>') -- Save
+  vim.keymap.set('v', '<c-c>', '"+y') -- Copy
+  vim.keymap.set('n', '<c-v>', '"+P') -- Paste normal mode
+  vim.keymap.set('v', '<c-v>', '"+P') -- Paste visual mode
+  vim.keymap.set('t', '<c-v>', '"+P') -- Paste visual mode
+  vim.keymap.set('c', '<c-v>', '<C-R>+') -- Paste command mode
+  vim.keymap.set('i', '<c-v>', '<ESC>l"+Pli') -- Paste insert mode
+  vim.keymap.set('t', '<C-v>', charinput, { expr = true })
+end
+
 vim.diagnostic.disable()
 
 local actions = require "telescope.actions"

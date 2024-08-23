@@ -10,16 +10,18 @@ else
   enabled = false
 end
 
-return {
-  {
-    "nvim-telescope/telescope.nvim",
-    keys = {
-      { "<leader>sg", false },
-    },
-  },
-  {
-    "nvim-telescope/telescope-fzf-native.nvim",
-    build = build,
-    enabled = enabled,
-  },
-}
+--
+-- return {
+--   {
+--     "nvim-telescope/telescope.nvim",
+--     keys = {
+--       { "<leader>sg", false },
+--     },
+--   },
+--   {
+--     "nvim-telescope/telescope-fzf-native.nvim",
+--     build = build,
+--     enabled = enabled,
+--   },
+-- }
+return {}

@@ -19,6 +19,9 @@ if vim.g.neovide then
   vim.keymap.set('c', '<c-v>', '<C-R>+') -- Paste command mode
   vim.keymap.set('i', '<c-v>', '<ESC>l"+Pli') -- Paste insert mode
   vim.keymap.set('t', '<C-v>', charinput, { expr = true })
+  vim.g.neovide_refresh_rate = 60
+  vim.g.neovide_cursor_vfx_mode = "wireframe"
+  vim.g.neovide_no_idle = true
 end
 
 vim.diagnostic.disable()

@@ -17,6 +17,7 @@ vim.keymap.set("n", "<leader>ch", "<cmd>%!xxd<CR>", { silent = true, desc = "Cha
 vim.keymap.set("n", "<leader>cH", "<cmd>%!xxd -r<CR>", { silent = true, desc = "Change to ASCII format" })
 vim.keymap.set("n", "<leader>o", "<CMD>Oil<CR>", { desc = "Open Oil.nvim" })
 vim.keymap.set("n", "c", "\"_c", { desc = "Open Oil.nvim" })
+vim.keymap.set("", "q:", "", {})
 
 
 -- local telescopebuiltin = require("telescope.builtin")

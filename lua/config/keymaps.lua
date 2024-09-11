@@ -26,9 +26,9 @@ vim.keymap.set("", "q:", "", {})
 -- end
 -- vim.keymap.set("n", "<leader>sf", grep_cword, {desc = "Find file under curosr"})
 
-local FzfLuabuiltin = require("fzf-lua")
+-- local FzfLuabuiltin = require("fzf-lua")
 local function grep_cword_fzflua()
-  return FzfLuabuiltin.files({query = "'" .. vim.fn.expand('<cword>')})
+  return require("fzf-lua").files({query = "'" .. vim.fn.expand('<cword>')})
 end
 vim.keymap.set("n", "<leader>sf", grep_cword_fzflua, {desc = "Find file under curosr"})
 
@@ -50,7 +50,7 @@ end
 -- vim.keymap.set("v", "<leader>sf", grep_vword, {desc = "Find file for selected"})
 
 local function grep_vword_fzflua()
-  return FzfLuabuiltin.files({query = "'" .. vim.getVisualSelection()})
+  return require("fzf-lua").files({query = "'" .. vim.getVisualSelection()})
 end
 vim.keymap.set("v", "<leader>sf", grep_vword_fzflua, {desc = "Find file under curosr"})
 
@@ -64,7 +64,7 @@ vim.keymap.set("v", "<leader>sf", grep_vword_fzflua, {desc = "Find file under cu
 -- vim.keymap.set("n", "<leader>s/", search_string, { silent = true , desc = "Grep search"})
 
 local function search_string_fzflua()
-  return FzfLuabuiltin.grep()
+  return require("fzf-lua").grep()
 end
 vim.keymap.set("n", "<leader>s/", search_string_fzflua, { silent = true , desc = "Grep search"})
 
@@ -75,7 +75,7 @@ vim.keymap.set("n", "<leader>s/", search_string_fzflua, { silent = true , desc =
 
 local function search_current_buffer_name_fzflua()
   local search_string = vim.fn.expand("%:t") 
-  return FzfLuabuiltin.live_grep_glob({ query = search_string})
+  return require("fzf-lua").live_grep_glob({ query = search_string})
 end
 vim.keymap.set("n", "<leader>sB",search_current_buffer_name_fzflua,{ silent = true, desc = "Search current buffer file name" })
 

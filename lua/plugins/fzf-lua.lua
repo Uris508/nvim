@@ -1,9 +1,23 @@
 
 return {
-  {
-    "ibhagwan/fzf-lua",
-    keys = {
-      { "<leader>sg", false },
+
+    {
+      "ibhagwan/fzf-lua",
+      -- optional for icon support
+      dependencies = { "nvim-tree/nvim-web-devicons" },
+      keys = {
+        { "<leader>sg", false },
+      },
+      config = function()
+        -- calling `setup` is optional for customization
+        require("fzf-lua").setup({
+          winopts = {
+            preview = {
+              vertical = 'up',
+            },
+          },
+         preview_layout = 'vertical',
+        })
+      end,
     },
-  },
 }

@@ -65,16 +65,6 @@ vim.diagnostic.disable()
 -- flash.nvim
 -- disable search jump
 -- use lowercase label only
-require("flash").setup({
-  label = {
-    uppercase = false,
-  },
-  modes = {
-    search = {
-      enabled = false,
-    }, 
-  },
-})
 -- mini indentscope
 -- disable animation 
 -- require("mini.indentscope").setup({
@@ -86,25 +76,14 @@ require("flash").setup({
 -- })
 -- lualine 
 -- do not shorten path
-require('lualine').setup ({
-  sections = {
-    lualine_c = {
-      {
-        'filename',
-        path = 1,
-        show_filename_only = false,
-      },
-    },
-  },
-})
 -- aerial
 -- change windows to left
-require("aerial").setup({
-  layout = {
-    default_direction = "prefer_left",
-  },
-})
+-- require("aerial").setup({
+--   layout = {
+--     default_direction = "prefer_left",
+--   },
+-- })
 -- neoscroll
-require('neoscroll').setup()
+-- require('neoscroll').setup()
 -- oil.nvim
-require("oil").setup()
+-- require("oil").setup()

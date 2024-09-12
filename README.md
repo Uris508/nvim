@@ -1,4 +1,40 @@
 # 💤 LazyVim
 
-A starter template for [LazyVim](https://github.com/LazyVim/LazyVim).
-Refer to the [documentation](https://lazyvim.github.io/installation) to get started.
+## Requirements
+
+1. neovim
+```
+winget install Neovim.Neovim
+```
+2. Fzf
+```
+winget install fzf 
+```
+3. Ripgrep
+```
+winget install BurntSushi.ripgrep.MSVC
+```
+4. LLVM
+```
+winget install -e -id LLVM.LLVM
+```
+5. Node.JS
+```
+winget install -e -id OpenJS.NodeJS
+```
+6. [Nerd fonts](https://www.nerdfonts.com/font-downloads)
+
+
+## Install LazyVim
+```
+Move-Item $env:LOCALAPPDATA\nvim $env:LOCALAPPDATA\nvim.bak
+```
+
+```
+Move-Item $env:LOCALAPPDATA\nvim-data $env:LOCALAPPDATA\nvim-data.bak
+```
+
+```
+git clone https://github.com/LazyVim/starter $env:LOCALAPPDATA\nvim
+Remove-Item $env:LOCALAPPDATA\nvim\.git -Recurse -Force
+```

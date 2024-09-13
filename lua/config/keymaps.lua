@@ -8,7 +8,7 @@ vim.keymap.set("n", "<leader>sg", "<cmd>lua require('fzf-lua').live_grep_glob()<
 vim.api.nvim_set_keymap("n", "<Leader>sb",
   [[<cmd>lua require('telescope').extensions.recent_files.pick()<CR>]],
   {noremap = true, silent = true, desc = "Buffer list"})
-vim.keymap.set("n", "<leader>fo", "<cmd>!start %:p:h<CR>", { silent = true, desc = "Open file folder" })
+-- vim.keymap.set("n", "<leader>fo", "<cmd>!explorer %:p:h<CR>", { silent = true, desc = "Open file folder" })
 vim.keymap.set("n", "<leader>D", "<cmd>Dashboard<CR>", { silent = true, desc = "Open Dashboard" })
 vim.keymap.set("n", "<leader>fp","<cmd>let @+=expand('%:.')<CR>",{ silent = true, desc = "Copy relative Path" })
 vim.keymap.set("n", "<leader>fP","<cmd>let @+=expand('%:p')<CR>",{ silent = true, desc = "Copy full Path" })
@@ -19,6 +19,11 @@ vim.keymap.set("n", "<leader>o", "<CMD>Oil<CR>", { desc = "Open Oil.nvim" })
 vim.keymap.set("n", "c", "\"_c", { desc = "remove wo copy" })
 vim.keymap.set("", "q:", "", {})
 
+local function OpenCurrentBufferPath()
+  local path = vim.fn.expand("%:p:h")
+  return os.execute('explorer ' .. path)
+end
+vim.keymap.set("n", "<leader>fo", OpenCurrentBufferPath, { silent = true, desc = "Open file folder" })
 
 -- local telescopebuiltin = require("telescope.builtin")
 -- local function grep_cword()

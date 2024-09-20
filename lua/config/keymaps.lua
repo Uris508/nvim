@@ -18,6 +18,8 @@ vim.keymap.set("n", "<leader>cH", "<cmd>%!xxd -r<CR>", { silent = true, desc = "
 vim.keymap.set("n", "<leader>o", "<CMD>Oil<CR>", { desc = "Open Oil.nvim" })
 vim.keymap.set("n", "c", "\"_c", { desc = "remove wo copy" })
 vim.keymap.set("", "q:", "", {})
+vim.keymap.set("n", "<leader>me", "<cmd>lua require('render-markdown').enable()<CR>", {silent = trye, desc = "enable render markdown"})
+vim.keymap.set("n", "<leader>md", "<cmd>lua require('render-markdown').disable()<CR>", {silent = trye, desc = "disable render markdown"})
 
 local function OpenCurrentBufferPath()
   local path = vim.fn.expand("%:p:h")

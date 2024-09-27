@@ -41,3 +41,30 @@ git clone https://github.com/LazyVim/starter $env:LOCALAPPDATA\nvim
 ```
 Remove-Item $env:LOCALAPPDATA\nvim\.git -Recurse -Force
 ```
+
+## Compile Neovide (VS 2017 later required)
+
+1. Install Rust 
+```
+winget install -e --id=Rustlang.Rustup
+```
+```
+winget install -e --id=Rustlang.Rust.MSVC
+```
+
+2. Install Cmake
+```
+winget install -e --id=Kitware.CMake
+```
+
+
+3. Compile Neovide
+>
+> If you don't have VS2017 
+> ```
+> winget install Microsoft.VisualStudio.2022.Community --silent --override "--wait --quiet --add ProductLang En-us --add Microsoft.VisualStudio.Workload.NativeDesktop --includeRecommended"
+> ```
+>
+```
+cargo install --git https://github.com/neovide/neovide.git
+```

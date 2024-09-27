@@ -14,9 +14,9 @@ winget install fzf
 ```
 winget install BurntSushi.ripgrep.MSVC
 ```
-4. LLVM
+4. Zig (for treesitter)
 ```
-winget install -e --id=LLVM.LLVM
+winget install -e Zig 
 ```
 5. Node.JS
 ```

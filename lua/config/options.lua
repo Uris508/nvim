@@ -3,4 +3,5 @@
 -- Add any additional options here
 vim.g.autoformat = false
 vim.opt.title = true
-vim.opt.titlestring = [[%{fnamemodify(getcwd(), ':f')}]]
+-- vim.opt.titlestring = [[%{fnamemodify(getcwd(), ':f')}]]
+vim.opt.titlestring = 'neovim'

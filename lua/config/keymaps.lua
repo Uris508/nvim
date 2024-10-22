@@ -18,8 +18,29 @@ vim.keymap.set("n", "<leader>cH", "<cmd>%!xxd -r<CR>", { silent = true, desc = "
 vim.keymap.set("n", "<leader>o", "<CMD>Oil<CR>", { desc = "Open Oil.nvim" })
 vim.keymap.set("n", "c", "\"_c", { desc = "remove wo copy" })
 vim.keymap.set("", "q:", "", {})
-vim.keymap.set("n", "<leader>me", "<cmd>lua require('render-markdown').enable()<CR>", {silent = trye, desc = "enable render markdown"})
-vim.keymap.set("n", "<leader>md", "<cmd>lua require('render-markdown').disable()<CR>", {silent = trye, desc = "disable render markdown"})
+vim.keymap.set("n", "<leader>me", "<cmd>lua require('render-markdown').enable()<CR>", {silent = true, desc = "enable render markdown"})
+vim.keymap.set("n", "<leader>md", "<cmd>lua require('render-markdown').disable()<CR>", {silent = true, desc = "disable render markdown"})
+
+local function transparent_off()
+  require("tokyonight").setup {
+    transparent = false,
+  }
+  vim.cmd("colorscheme tokyonight")
+end
+
+local function transparent_on()
+  require("tokyonight").setup {
+    transparent = true,
+    styles = {
+      sidebars = "transparent",
+      floats = "transparent",
+    },
+  }
+  vim.cmd("colorscheme tokyonight")
+end
+
+vim.keymap.set("n", "<leader>td", transparent_off, {silent = true, desc = "disable transparent"})
+vim.keymap.set("n", "<leader>te", transparent_on, {silent = true, desc = "enable transparent"})
 
 local function OpenCurrentBufferPath()
   local path = vim.fn.expand("%:p:h")

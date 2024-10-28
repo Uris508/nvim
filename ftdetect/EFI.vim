@@ -9,4 +9,5 @@ augroup filetype
   au ColorScheme,BufRead,BufNewFile *.dxs setf c.doxygen
   au BufRead,BufNewFile *.inf,*.inc,*.dec,*.dsc,*.fdf setlocal commentstring=#\ %s
   au BufRead,BufNewFile *.asl,*.vfr,*.hfr,*.Vfr,*.uni,*.sd setlocal commentstring=//\ %s
+  au BufRead,BufNewFile *.asl,*.dsl,*.asi setf asl 
 augroup end

@@ -15,6 +15,7 @@ return {
             preview = {
               vertical = 'up',
             },
+            width = 1,
           },
          preview_layout = 'vertical',
         })

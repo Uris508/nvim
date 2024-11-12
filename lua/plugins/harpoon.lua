@@ -13,14 +13,16 @@ return {
     keys = function()
       local keys = {
         {
-          "<leader>a",
+          -- "<leader>a",
+          "<S-l>",
           function()
             require("harpoon"):list():add()
           end,
           desc = "Harpoon File",
         },
         {
-          "<leader>h",
+          -- "<leader>h",
+          "<S-h>",
           function()
             local harpoon = require("harpoon")
             local width = vim.api.nvim_win_get_width(0) - 4,
@@ -31,15 +33,15 @@ return {
         },
       }
 
-      for i = 1, 5 do
-        table.insert(keys, {
-          "<leader>" .. i,
-          function()
-            require("harpoon"):list():select(i)
-          end,
-          desc = "Harpoon to File " .. i,
-        })
-      end
+      -- for i = 1, 5 do
+      --   table.insert(keys, {
+      --     "<leader>" .. i,
+      --     function()
+      --       require("harpoon"):list():select(i)
+      --     end,
+      --     desc = "Harpoon to File " .. i,
+      --   })
+      -- end
       return keys
     end,
   }

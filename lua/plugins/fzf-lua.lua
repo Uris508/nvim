@@ -13,11 +13,13 @@ return {
         require("fzf-lua").setup({
           winopts = {
             preview = {
+              layout = 'vertical',
               vertical = 'up',
             },
             width = 1,
           },
-         preview_layout = 'vertical',
+         -- preview_layout = 'vertical',
+
         })
       end,
     },

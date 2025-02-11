@@ -9,6 +9,9 @@ require("config.lazy")
 local function charinput()
 	return '<C-\\><C-N>"' .. vim.fn.nr2char(vim.fn.getchar()) .. 'pi'
 end
+local alpha = function()
+  return string.format("%x", math.floor(255 * vim.g.transparency or 0.8))
+end
 vim.keymap.set('t', '<C-R>', charinput, { expr = true })
 if vim.g.neovide then
   vim.keymap.set('n', '<c-s>', ':w<CR>') -- Save
@@ -22,6 +25,9 @@ if vim.g.neovide then
   vim.g.neovide_refresh_rate = 60
   vim.g.neovide_cursor_vfx_mode = "wireframe"
   vim.g.neovide_no_idle = true
+  vim.g.neovide_transparency = 0.9
+  vim.g.transparency = 0.9
+  vim.g.neovide_background_color = "#0f1117" .. alpha()
 end
 
 vim.diagnostic.disable()

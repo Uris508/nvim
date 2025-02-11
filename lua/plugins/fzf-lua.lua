@@ -11,6 +11,7 @@ return {
       config = function()
         -- calling `setup` is optional for customization
         require("fzf-lua").setup({
+          'max-perf',
           winopts = {
             preview = {
               layout = 'vertical',

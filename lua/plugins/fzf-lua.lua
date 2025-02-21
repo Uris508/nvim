@@ -7,6 +7,10 @@ return {
       dependencies = { "nvim-tree/nvim-web-devicons" },
       keys = {
         { "<leader>sg", false },
+        { "<leader><leader>", false },
+        { "<leader>sw", false },
+        { "<leader>gs", false },
+        { "<leader>fb", false },
       },
       config = function()
         -- calling `setup` is optional for customization

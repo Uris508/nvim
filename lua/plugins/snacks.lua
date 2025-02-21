@@ -2,7 +2,37 @@ return {
   "folke/snacks.nvim",
   priority = 1000,
   lazy = false,
+
   opts = {
+    picker = {
+      layouts = {
+        vertical = {
+          layout = {
+            backdrop = false,
+            width = 0.95,
+            min_width = 80,
+            height = 0.9,
+            min_height = 30,
+            box = "vertical",
+            border = "rounded",
+            title = "{title} {live} {flags}",
+            title_pos = "center",
+            { win = "preview", title = "{preview}", height = 0.6, border = "bottom" },
+            { win = "input", height = 1, border = "none" },
+            { win = "list", border = "top" },
+          },
+        },
+      },
+      layout = {
+        cycle = false,
+        preset = "vertical",
+      },
+      formatters = {
+          file = {
+            truncate = 180,
+          },
+      },
+    },
     dashboard = { ---@class snacks.dashboard.Config
       ---@field sections snacks.dashboard.Section
       ---@field formats table<string, snacks.dashboard.Text|fun(item:snacks.dashboard.Item, ctx:snacks.dashboard.Format.ctx):snacks.dashboard.Text>

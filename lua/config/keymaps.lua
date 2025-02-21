@@ -3,18 +3,24 @@
 -- Add any additional keymaps here
 -- vim.keymap.set("n", "<leader>sg", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
 -- vim.keymap.set("n", "<c-P>", "<cmd>lua require('fzf-lua').files()<CR>", { silent = true })
-vim.keymap.set("n", "<leader>sg", "<cmd>lua require('fzf-lua').live_grep_glob()<CR>", { silent = true, desc ="live grep glob" })
+-- vim.keymap.set("n", "<leader>sg", "<cmd>lua require('fzf-lua').live_grep_glob()<CR>", { silent = true, desc ="live grep glob" })
+vim.keymap.set("n", "<leader>sg", "<cmd>lua require('snacks').picker.grep()<CR>", { silent = false, desc ="live grep glob" })
+vim.keymap.set("n", "<leader><leader>", "<cmd>lua require('snacks').picker.files()<CR>", { silent = false})
+vim.keymap.set("n", "<leader>sw", "<cmd>lua require('snacks').picker.grep_word()<CR>", { silent = false, desc ="word"})
+vim.keymap.set("", "<leader>gs", "<cmd>lua require('snacks').picker.git_status()<CR>", { silent = false, desc ="git status"})
+vim.keymap.set("n", "<leader>fb", "<cmd>lua require('snacks').picker.buffers()<CR>", { silent = false, desc ="Buffers"})
 -- vim.keymap.set("n", "<leader>s/", "<cmd>lua require('fzf-lua').grep()<CR>", { silent = true , desc = "fzf grep search"})
-vim.api.nvim_set_keymap("n", "<Leader>sb",
-  [[<cmd>lua require('telescope').extensions.recent_files.pick()<CR>]],
-  {noremap = true, silent = true, desc = "Buffer list"})
+-- vim.api.nvim_set_keymap("n", "<Leader>sb",
+--   [[<cmd>lua require('telescope').extensions.recent_files.pick()<CR>]],
+--   {noremap = true, silent = true, desc = "Buffer list"})
+vim.keymap.set("n", "<leader>sb", "<cmd>lua require('snacks').picker.recent()<CR>", { silent = false, desc ="Buffer list"})
 -- vim.keymap.set("n", "<leader>fo", "<cmd>!explorer %:p:h<CR>", { silent = true, desc = "Open file folder" })
-vim.keymap.set("n", "<leader>D", "<cmd>Dashboard<CR>", { silent = true, desc = "Open Dashboard" })
-vim.keymap.set("n", "<leader>fp","<cmd>let @+=expand('%:.')<CR>",{ silent = true, desc = "Copy relative Path" })
-vim.keymap.set("n", "<leader>fP","<cmd>let @+=expand('%:p')<CR>",{ silent = true, desc = "Copy full Path" })
-vim.keymap.set("n", "<leader>fN","<cmd>let @+=expand('%:t')<CR>",{ silent = true, desc = "Copy file name" })
-vim.keymap.set("n", "<leader>ch", "<cmd>%!xxd<CR>", { silent = true, desc = "Change to HEX format" })
-vim.keymap.set("n", "<leader>cH", "<cmd>%!xxd -r<CR>", { silent = true, desc = "Change to ASCII format" })
+vim.keymap.set("n", "<leader>D", "<cmd>Dashboard<CR>", { silent = false, desc = "Open Dashboard" })
+vim.keymap.set("n", "<leader>fp","<cmd>let @+=expand('%:.')<CR>",{ silent = false, desc = "Copy relative Path" })
+vim.keymap.set("n", "<leader>fP","<cmd>let @+=expand('%:p')<CR>",{ silent = false, desc = "Copy full Path" })
+vim.keymap.set("n", "<leader>fN","<cmd>let @+=expand('%:t')<CR>",{ silent = false, desc = "Copy file name" })
+vim.keymap.set("n", "<leader>ch", "<cmd>%!xxd<CR>", { silent = false, desc = "Change to HEX format" })
+vim.keymap.set("n", "<leader>cH", "<cmd>%!xxd -r<CR>", { silent = false, desc = "Change to ASCII format" })
 vim.keymap.set("n", "<leader>o", "<CMD>Oil<CR>", { desc = "Open Oil.nvim" })
 vim.keymap.set("n", "c", "\"_c", { desc = "remove wo copy" })
 vim.keymap.set("", "q:", "", {})
@@ -57,6 +63,7 @@ vim.keymap.set("n", "<leader>fo", OpenCurrentBufferPath, { silent = true, desc =
 -- local FzfLuabuiltin = require("fzf-lua")
 local function grep_cword_fzflua()
   return require("fzf-lua").files({query = "'" .. vim.fn.expand('<cword>')})
+  -- return require("snacks").picker.files({query = "'" .. vim.fn.expand('<cword>')})
 end
 vim.keymap.set("n", "<leader>sf", grep_cword_fzflua, {desc = "Find file under curosr"})
 

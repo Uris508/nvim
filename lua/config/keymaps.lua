@@ -16,8 +16,8 @@ vim.keymap.set("n", "<leader>fb", "<cmd>lua require('snacks').picker.buffers()<C
 vim.keymap.set("n", "<leader>sb", "<cmd>lua require('snacks').picker.recent()<CR>", { silent = false, desc ="Buffer list"})
 -- vim.keymap.set("n", "<leader>fo", "<cmd>!explorer %:p:h<CR>", { silent = true, desc = "Open file folder" })
 vim.keymap.set("n", "<leader>D", "<cmd>Dashboard<CR>", { silent = false, desc = "Open Dashboard" })
-vim.keymap.set("n", "<leader>fp","<cmd>let @+=expand('%:.')<CR>",{ silent = false, desc = "Copy relative Path" })
-vim.keymap.set("n", "<leader>fP","<cmd>let @+=expand('%:p')<CR>",{ silent = false, desc = "Copy full Path" })
+vim.keymap.set("n", "<leader>fp","<cmd>set noshellslash<CR><cmd>let @+=expand('%:.')<CR>",{ silent = false, desc = "Copy relative Path" })
+vim.keymap.set("n", "<leader>fP","<cmd>set noshellslash<CR><cmd>let @+=expand('%:p')<CR>",{ silent = false, desc = "Copy full Path" })
 vim.keymap.set("n", "<leader>fN","<cmd>let @+=expand('%:t')<CR>",{ silent = false, desc = "Copy file name" })
 vim.keymap.set("n", "<leader>ch", "<cmd>%!xxd<CR>", { silent = false, desc = "Change to HEX format" })
 vim.keymap.set("n", "<leader>cH", "<cmd>%!xxd -r<CR>", { silent = false, desc = "Change to ASCII format" })
@@ -49,10 +49,12 @@ vim.keymap.set("n", "<leader>td", transparent_off, {silent = true, desc = "disab
 vim.keymap.set("n", "<leader>te", transparent_on, {silent = true, desc = "enable transparent"})
 
 local function OpenCurrentBufferPath()
+  vim.cmd('set noshellslash')
   local path = vim.fn.expand("%:p:h")
+  -- vim.print(path)
   return os.execute('explorer ' .. path)
 end
-vim.keymap.set("n", "<leader>fo", OpenCurrentBufferPath, { silent = true, desc = "Open file folder" })
+vim.keymap.set("n", "<leader>fo", OpenCurrentBufferPath, { silent = false, desc = "Open file folder" })
 
 -- local telescopebuiltin = require("telescope.builtin")
 -- local function grep_cword()

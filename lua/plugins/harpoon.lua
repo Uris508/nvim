@@ -16,6 +16,7 @@ return {
           -- "<leader>a",
           "<S-l>",
           function()
+            vim.cmd('set noshellslash')
             require("harpoon"):list():add()
           end,
           desc = "Harpoon File",
@@ -26,6 +27,7 @@ return {
           function()
             local harpoon = require("harpoon")
             local width = vim.api.nvim_win_get_width(0) - 4,
+            vim.cmd('set noshellslash')
             harpoon.ui:toggle_quick_menu(harpoon:list())
             vim.api.nvim_win_set_width(0,width)
           end,

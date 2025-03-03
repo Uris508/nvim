@@ -5,7 +5,7 @@
 -- vim.keymap.set("n", "<c-P>", "<cmd>lua require('fzf-lua').files()<CR>", { silent = true })
 -- vim.keymap.set("n", "<leader>sg", "<cmd>lua require('fzf-lua').live_grep_glob()<CR>", { silent = true, desc ="live grep glob" })
 vim.keymap.set("n", "<leader>sg", "<cmd>lua require('snacks').picker.grep()<CR>", { silent = false, desc ="live grep glob" })
-vim.keymap.set("n", "<leader><leader>", "<cmd>lua require('snacks').picker.files()<CR>", { silent = false})
+vim.keymap.set("n", "<leader><leader>", "<cmd>lua require('snacks').picker.files()<CR>", { silent = false, desc ="find files" })
 vim.keymap.set("n", "<leader>sw", "<cmd>lua require('snacks').picker.grep_word()<CR>", { silent = false, desc ="word"})
 vim.keymap.set("", "<leader>gs", "<cmd>lua require('snacks').picker.git_status()<CR>", { silent = false, desc ="git status"})
 vim.keymap.set("n", "<leader>fb", "<cmd>lua require('snacks').picker.buffers()<CR>", { silent = false, desc ="Buffers"})

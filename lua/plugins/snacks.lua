@@ -79,7 +79,8 @@ return {
         {
           -- pane = 2,
           section = "terminal",
-          cmd = "chafa c:/logo/hokie.jpg --format symbols --symbols vhalf --size 60x60",
+          -- cmd = "chafa c:/logo/angry_trump.jpg --format symbols --symbols vhalf --size 60x60",
+          cmd = vim.g.uris_logo,
           height = 30,
           padding = 1,
         },

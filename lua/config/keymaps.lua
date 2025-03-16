@@ -15,7 +15,8 @@ vim.keymap.set("n", "<leader>fb", "<cmd>lua require('snacks').picker.buffers()<C
 --   {noremap = true, silent = true, desc = "Buffer list"})
 vim.keymap.set("n", "<leader>sb", "<cmd>lua require('snacks').picker.recent()<CR>", { silent = false, desc ="Buffer list"})
 -- vim.keymap.set("n", "<leader>fo", "<cmd>!explorer %:p:h<CR>", { silent = true, desc = "Open file folder" })
-vim.keymap.set("n", "<leader>D", "<cmd>Dashboard<CR>", { silent = false, desc = "Open Dashboard" })
+-- vim.keymap.set("n", "<leader>D", "<cmd>Dashboard<CR>", { silent = false, desc = "Open Dashboard" })
+vim.keymap.set("n", "<leader>D", "<cmd>lua require('snacks').dashboard.open()<CR>", { silent = false, desc = "Open Dashboard" })
 vim.keymap.set("n", "<leader>fp","<cmd>set noshellslash<CR><cmd>let @+=expand('%:.')<CR>",{ silent = false, desc = "Copy relative Path" })
 vim.keymap.set("n", "<leader>fP","<cmd>set noshellslash<CR><cmd>let @+=expand('%:p')<CR>",{ silent = false, desc = "Copy full Path" })
 vim.keymap.set("n", "<leader>fN","<cmd>let @+=expand('%:t')<CR>",{ silent = false, desc = "Copy file name" })
@@ -187,4 +188,11 @@ vim.keymap.set("n", "gce", CustomCommentStringEnd, {desc = "Custom Comment End"}
 vim.keymap.set("n", "gcl", CustomCommnetStringLine, {desc = "Custom Comment Line"})
 vim.keymap.set("v", "gb", CustomCommentStringBlock, {desc = "Custom Comment Block"})
 
+vim.keymap.set("n", "<leader>v", function()
+  if next(require("diffview.lib").views) == nil then
+    vim.cmd("DiffviewOpen")
+  else
+    vim.cmd("DiffviewClose")
+  end
+end)
 

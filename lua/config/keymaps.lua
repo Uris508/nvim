@@ -8,6 +8,7 @@ vim.keymap.set("n", "<leader>sg", "<cmd>lua require('snacks').picker.grep()<CR>"
 vim.keymap.set("n", "<leader><leader>", "<cmd>lua require('snacks').picker.files()<CR>", { silent = false, desc ="find files" })
 vim.keymap.set("n", "<leader>sw", "<cmd>lua require('snacks').picker.grep_word()<CR>", { silent = false, desc ="word"})
 vim.keymap.set("", "<leader>gs", "<cmd>lua require('snacks').picker.git_status()<CR>", { silent = false, desc ="git status"})
+vim.keymap.set("", "<leader>sR", "<cmd>lua require('snacks').picker.resume()<CR>", { silent = false, desc ="Resume"})
 vim.keymap.set("n", "<leader>fb", "<cmd>lua require('snacks').picker.buffers()<CR>", { silent = false, desc ="Buffers"})
 -- vim.keymap.set("n", "<leader>s/", "<cmd>lua require('fzf-lua').grep()<CR>", { silent = true , desc = "fzf grep search"})
 -- vim.api.nvim_set_keymap("n", "<Leader>sb",

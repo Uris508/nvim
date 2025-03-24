@@ -11,6 +11,7 @@ return {
         { "<leader>sw", false },
         { "<leader>gs", false },
         { "<leader>fb", false },
+        { "<leader>sR", false },
       },
       config = function()
         -- calling `setup` is optional for customization

@@ -23,11 +23,13 @@ if vim.g.neovide then
   vim.keymap.set('i', '<c-v>', '<ESC>l"+Pli') -- Paste insert mode
   vim.keymap.set('t', '<C-v>', charinput, { expr = true })
   vim.g.neovide_refresh_rate = 60
-  vim.g.neovide_cursor_vfx_mode = "wireframe"
+  -- vim.g.neovide_cursor_vfx_mode = "wireframe"
   vim.g.neovide_no_idle = true
-  vim.g.neovide_transparency = 0.9
+  vim.g.neovide_opacity = 0.9
   vim.g.transparency = 0.9
   vim.g.neovide_background_color = "#0f1117" .. alpha()
+  vim.g.neovide_cursor_trail_size = 1.0
+  vim.g.neovide_cursor_animation_length = 0.04
 end
 
 vim.diagnostic.disable()

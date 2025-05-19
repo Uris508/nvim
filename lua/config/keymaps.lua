@@ -196,5 +196,5 @@ vim.keymap.set("n", "<leader>v", function()
   else
     vim.cmd("DiffviewClose")
   end
-end)
+end,{desc = "toggle diffview"})
 

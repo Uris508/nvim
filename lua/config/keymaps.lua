@@ -28,6 +28,7 @@ vim.keymap.set("n", "c", "\"_c", { desc = "remove wo copy" })
 vim.keymap.set("", "q:", "", {})
 vim.keymap.set("n", "<leader>me", "<cmd>lua require('render-markdown').enable()<CR>", {silent = true, desc = "enable render markdown"})
 vim.keymap.set("n", "<leader>md", "<cmd>lua require('render-markdown').disable()<CR>", {silent = true, desc = "disable render markdown"})
+vim.keymap.set("n", "<leader>rr", "<cmd>edit!<CR>", {silent = true, desc = "reload buf"})
 
 local function transparent_off()
   require("tokyonight").setup {

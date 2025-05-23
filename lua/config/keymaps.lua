@@ -198,3 +198,7 @@ vim.keymap.set("n", "<leader>v", function()
   end
 end,{desc = "toggle diffview"})
 
+-- Take screenshot just of selected lines
+-- vim.keymap.set('v', '<Leader>cs',  "<cmd>lua require('codeshot').selected_lines()<CR>", {desc = "CodeShot"})
+vim.keymap.set('v', '<Leader>cs',  ":SSSelected", {desc = "CodeShot"})
+

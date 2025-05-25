@@ -37,7 +37,7 @@ return {
           ["trouble"] = true,
           ["VoltWindow"] = true,
           ["undotree"] = true,
-          ["Harpoon"] = true,
+          ["harpoon"] = true,
 
        },
    },

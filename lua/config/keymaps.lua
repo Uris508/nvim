@@ -75,6 +75,7 @@ vim.keymap.set("n", "<leader>fo", OpenCurrentBufferPath, { silent = false, desc 
 
 local function grep_cword_snacks()
   vim.cmd('normal viw')
+  vim.cmd('normal t.')
   vim.cmd('normal 2w')
   return require("snacks").picker.files({ search = vim.getVisualSelection()})
 end

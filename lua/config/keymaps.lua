@@ -15,6 +15,7 @@ vim.keymap.set("n", "<leader>fb", "<cmd>lua require('snacks').picker.buffers()<C
 --   [[<cmd>lua require('telescope').extensions.recent_files.pick()<CR>]],
 --   {noremap = true, silent = true, desc = "Buffer list"})
 vim.keymap.set("n", "<leader>sb", "<cmd>lua require('snacks').picker.recent()<CR>", { silent = false, desc ="Buffer list"})
+vim.keymap.set("n", "<leader>sd", "<cmd>lua require('snacks').picker.git_diff()<CR>", { silent = false, desc ="Buffer list"})
 -- vim.keymap.set("n", "<leader>fo", "<cmd>!explorer %:p:h<CR>", { silent = true, desc = "Open file folder" })
 -- vim.keymap.set("n", "<leader>D", "<cmd>Dashboard<CR>", { silent = false, desc = "Open Dashboard" })
 vim.keymap.set("n", "<leader>D", "<cmd>lua require('snacks').dashboard.open()<CR>", { silent = false, desc = "Open Dashboard" })
@@ -75,7 +76,6 @@ vim.keymap.set("n", "<leader>fo", OpenCurrentBufferPath, { silent = false, desc 
 local function grep_cword_snacks()
   vim.cmd('normal viw')
   vim.cmd('normal 2w')
-  -- return require("snacks").picker.files({search = vim.fn.expand('<cword>')})
   return require("snacks").picker.files({ search = vim.getVisualSelection()})
 end
 vim.keymap.set("n", "<leader>sf", grep_cword_snacks, {desc = "Find file under curosr"})

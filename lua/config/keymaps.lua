@@ -66,11 +66,19 @@ vim.keymap.set("n", "<leader>fo", OpenCurrentBufferPath, { silent = false, desc 
 -- vim.keymap.set("n", "<leader>sf", grep_cword, {desc = "Find file under curosr"})
 
 -- local FzfLuabuiltin = require("fzf-lua")
-local function grep_cword_fzflua()
-  return require("fzf-lua").files({query = "'" .. vim.fn.expand('<cword>')})
-  -- return require("snacks").picker.files({query = "'" .. vim.fn.expand('<cword>')})
+-- local function grep_cword_fzflua()
+--   return require("fzf-lua").files({query = "'" .. vim.fn.expand('<cword>')})
+--   -- return require("snacks").picker.files({query = "'" .. vim.fn.expand('<cword>')})
+-- end
+-- vim.keymap.set("n", "<leader>sf", grep_cword_fzflua, {desc = "Find file under curosr"})
+
+local function grep_cword_snacks()
+  vim.cmd('normal viw')
+  vim.cmd('normal 2w')
+  -- return require("snacks").picker.files({search = vim.fn.expand('<cword>')})
+  return require("snacks").picker.files({ search = vim.getVisualSelection()})
 end
-vim.keymap.set("n", "<leader>sf", grep_cword_fzflua, {desc = "Find file under curosr"})
+vim.keymap.set("n", "<leader>sf", grep_cword_snacks, {desc = "Find file under curosr"})
 
 function vim.getVisualSelection()
 	vim.cmd('noau normal! "vy"')
@@ -89,10 +97,16 @@ end
 -- end
 -- vim.keymap.set("v", "<leader>sf", grep_vword, {desc = "Find file for selected"})
 
-local function grep_vword_fzflua()
-  return require("fzf-lua").files({query = "'" .. vim.getVisualSelection()})
+-- local function grep_vword_fzflua()
+--   return require("fzf-lua").files({query = "'" .. vim.getVisualSelection()})
+-- end
+-- vim.keymap.set("v", "<leader>sf", grep_vword_fzflua, {desc = "Find file under curosr"})
+
+local function grep_vword_snacks()
+  -- return require("snacks").picker.files({search = "'" .. vim.getVisualSelection()})
+  return require("snacks").picker.files({ search = vim.getVisualSelection()})
 end
-vim.keymap.set("v", "<leader>sf", grep_vword_fzflua, {desc = "Find file under curosr"})
+vim.keymap.set("v", "<leader>sf", grep_vword_snacks, {desc = "Find file under curosr"})
 
 -- local function search_string()
 -- local input_string = vim.fn.input("Search For > ")
@@ -113,11 +127,17 @@ vim.keymap.set("n", "<leader>s/", search_string_fzflua, { silent = true , desc =
 -- end
 -- vim.keymap.set("n", "<leader>sB",search_current_buffer_name,{ silent = true, desc = "Search current buffer file name" })
 
-local function search_current_buffer_name_fzflua()
+-- local function search_current_buffer_name_fzflua()
+--   local search_string = vim.fn.expand("%:t") 
+--   return require("fzf-lua").live_grep_glob({ query = search_string})
+-- end
+-- vim.keymap.set("n", "<leader>sB",search_current_buffer_name_fzflua,{ silent = true, desc = "Search current buffer file name" })
+
+local function search_current_buffer_name_snacks()
   local search_string = vim.fn.expand("%:t") 
-  return require("fzf-lua").live_grep_glob({ query = search_string})
+  return require("snacks").picker.grep({ search = search_string,})
 end
-vim.keymap.set("n", "<leader>sB",search_current_buffer_name_fzflua,{ silent = true, desc = "Search current buffer file name" })
+vim.keymap.set("n", "<leader>sB",search_current_buffer_name_snacks,{ silent = true, desc = "Search current buffer file name" })
 
 
 local CustomCommentStr = ''

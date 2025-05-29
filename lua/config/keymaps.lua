@@ -75,8 +75,7 @@ vim.keymap.set("n", "<leader>fo", OpenCurrentBufferPath, { silent = false, desc 
 
 local function grep_cword_snacks()
   vim.cmd('normal viw')
-  vim.cmd('normal t.')
-  vim.cmd('normal 2w')
+  vim.cmd('normal 2e')
   return require("snacks").picker.files({ search = vim.getVisualSelection()})
 end
 vim.keymap.set("n", "<leader>sf", grep_cword_snacks, {desc = "Find file under curosr"})

@@ -23,7 +23,10 @@ winget install -e Zig
 winget install -e --id=OpenJS.NodeJS
 ```
 6. [Nerd fonts](https://www.nerdfonts.com/font-downloads)
-
+7. Chafa
+```
+winget install --id=hpjansson.Chafa  -e
+```
 
 ## Install LazyVim
 ```

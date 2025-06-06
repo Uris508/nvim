@@ -33,6 +33,7 @@ if vim.g.neovide then
 end
 
 vim.diagnostic.disable()
+vim.opt.wrap = false
 
 -- local actions = require "telescope.actions"
 --

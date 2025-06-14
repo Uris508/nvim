@@ -34,6 +34,7 @@ vim.keymap.set("n", "<leader>me", "<cmd>lua require('render-markdown').enable()<
 vim.keymap.set("n", "<leader>md", "<cmd>lua require('render-markdown').disable()<CR>", {silent = true, desc = "disable render markdown"})
 vim.keymap.set("n", "<leader>rr", "<cmd>edit!<CR>", {silent = true, desc = "reload buf"})
 vim.keymap.set("n", "<leader>df", "<cmd>windo diffthis<CR>", {silent = true, desc = "windo diffthis"})
+vim.keymap.set("n", "<C-p>", "<cmd>echo getcwd()<CR>", {silent = true, desc = "get project name"})
 
 local function transparent_off()
   require("tokyonight").setup {

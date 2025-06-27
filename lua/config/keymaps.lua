@@ -15,7 +15,7 @@ vim.keymap.set("n", "<leader>fb", "<cmd>lua require('snacks').picker.buffers()<C
 --   [[<cmd>lua require('telescope').extensions.recent_files.pick()<CR>]],
 --   {noremap = true, silent = true, desc = "Buffer list"})
 vim.keymap.set("n", "<leader>sb", "<cmd>lua require('snacks').picker.recent()<CR>", { silent = false, desc ="Buffer list"})
-vim.keymap.set("n", "<leader>sd", "<cmd>lua require('snacks').picker.git_diff()<CR>", { silent = false, desc ="Buffer list"})
+vim.keymap.set("n", "<leader>sd", "<cmd>lua require('snacks').picker.git_diff()<CR>", { silent = false, desc ="git diff"})
 -- vim.keymap.set("n", "<leader>fo", "<cmd>!explorer %:p:h<CR>", { silent = true, desc = "Open file folder" })
 -- vim.keymap.set("n", "<leader>D", "<cmd>Dashboard<CR>", { silent = false, desc = "Open Dashboard" })
 vim.keymap.set("n", "<leader>D", "<cmd>lua require('snacks').dashboard.open()<CR>", { silent = false, desc = "Open Dashboard" })

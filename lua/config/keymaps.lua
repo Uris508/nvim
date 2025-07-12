@@ -34,6 +34,7 @@ vim.keymap.set("n", "<leader>me", "<cmd>lua require('render-markdown').enable()<
 vim.keymap.set("n", "<leader>md", "<cmd>lua require('render-markdown').disable()<CR>", {silent = true, desc = "disable render markdown"})
 vim.keymap.set("n", "<leader>rr", "<cmd>edit!<CR>", {silent = true, desc = "reload buf"})
 vim.keymap.set("n", "<leader>df", "<cmd>windo diffthis<CR>", {silent = true, desc = "windo diffthis"})
+vim.keymap.set("v", "<leader>rs", "<cmd>s/\\%V\\\\/\\//g<CR>", {silent = true, desc = "replace to forward slash"})
 
 local function showcwd()
       local text = vim.fn.getcwd()

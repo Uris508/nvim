@@ -30,6 +30,7 @@ if vim.g.neovide then
   vim.g.neovide_background_color = "#0f1117" .. alpha()
   vim.g.neovide_cursor_trail_size = 1.0
   vim.g.neovide_cursor_animation_length = 0.04
+  require('smear_cursor').enabled = false
 end
 
 vim.diagnostic.disable()

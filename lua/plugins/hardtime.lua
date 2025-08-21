@@ -3,6 +3,7 @@ return {
    lazy = false,
    dependencies = { "MunifTanjim/nui.nvim" },
    opts = {
+     max_count = 7,
      disable_mouse = false,
      disabled_filetypes = {
           ["aerial"] = true,

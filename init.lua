@@ -12,6 +12,8 @@ end
 local alpha = function()
   return string.format("%x", math.floor(255 * vim.g.transparency or 0.8))
 end
+
+vim.g.snacks_animate = false
 vim.keymap.set('t', '<C-R>', charinput, { expr = true })
 if vim.g.neovide then
   vim.keymap.set('n', '<c-s>', ':w<CR>') -- Save
@@ -30,6 +32,7 @@ if vim.g.neovide then
   vim.g.neovide_background_color = "#0f1117" .. alpha()
   vim.g.neovide_cursor_trail_size = 1.0
   vim.g.neovide_cursor_animation_length = 0.04
+  vim.g.snacks_animate = false
   require('smear_cursor').enabled = false
 end
 

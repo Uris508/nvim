@@ -4,7 +4,6 @@
 vim.g.autoformat = false
 vim.opt.title = true
 vim.opt.titlestring = 'neovim - ' .. [[%{fnamemodify(getcwd(), ':t')}]]
-vim.g.snacks_animate = true
 
 vim.g.uris_logo = 'chafa c:/logo/doom/doom3.png --format symbols --size 46x46'
 local hr = tonumber(os.date('%H', os.time()))

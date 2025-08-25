@@ -160,10 +160,17 @@ local CustomCommentStr = ''
 local CustomCommentType
 
 local function SetCustomCommentString()
-  require("smear_cursor").enabled = false
+
+  if vim.g.neovide then
+  else
+    require("smear_cursor").enabled = false
+  end
   CustomCommentType = vim.fn.input("Custom commet for Fix/Feature/WA ?")
   CustomCommentStr = vim.fn.input("Set Commnet string > ")
-  require("smear_cursor").enabled = true
+  if vim.g.neovide then
+  else
+    require("smear_cursor").enabled = true
+  end
 end
 
 local function CustomCommentStringBegin()

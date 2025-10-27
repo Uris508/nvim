@@ -4,6 +4,16 @@ return {
   lazy = false,
 
   opts = {
+    styles = {
+      blame_line = {
+        width = 0.95,
+        height = 0.8,
+        border = true,
+        title = " Git Blame ",
+        title_pos = "center",
+        ft = "git",
+      },
+    },
     picker = {
       layouts = {
         vertical = {

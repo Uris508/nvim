@@ -42,6 +42,27 @@ return {
             truncate = 180,
           },
       },
+      win = {
+        -- input window
+        input = {
+          keys = {
+            -- to close the picker on ESC instead of going to normal mode,
+            -- add the following keymap to your config
+            -- ["<Esc>"] = { "close", mode = { "n", "i" } },
+            ["<c-w>"] = { "cycle_win", mode = { "i", "n" } },
+          },
+        },
+        list = {
+            keys = {
+              ["<c-w>"] = { "cycle_win", mode = { "i", "n" } },
+            },
+        },
+        preview = {
+            keys = {
+              ["<c-w>"] = { "cycle_win", mode = { "i", "n" } },
+            },
+        },
+      },
     },
     dashboard = { ---@class snacks.dashboard.Config
       ---@field sections snacks.dashboard.Section

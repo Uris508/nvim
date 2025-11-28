@@ -73,7 +73,8 @@ local function OpenCurrentBufferPath()
   vim.cmd('set noshellslash')
   local path = vim.fn.expand("%:p:h")
   -- vim.print(path)
-  return os.execute('explorer ' .. path)
+  -- return os.execute('explorer ' .. path)
+  return os.execute('onecommander ' .. path)
 end
 vim.keymap.set("n", "<leader>fo", OpenCurrentBufferPath, { silent = false, desc = "Open file folder" })
 

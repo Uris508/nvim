@@ -27,7 +27,7 @@ if vim.g.neovide then
   vim.g.neovide_refresh_rate = 60
   -- vim.g.neovide_cursor_vfx_mode = "wireframe"
   vim.g.neovide_no_idle = true
-  vim.g.neovide_opacity = 0.9
+  vim.g.neovide_opacity = 1.0
   vim.g.transparency = 0.9
   vim.g.neovide_background_color = "#0f1117" .. alpha()
   vim.g.neovide_cursor_trail_size = 1.0
@@ -36,7 +36,6 @@ if vim.g.neovide then
   vim.g.neovide_cursor_vfx_mode = "pixiedust"
   require('smear_cursor').enabled = false
 end
-
 require('smear_cursor').enabled = false
 vim.diagnostic.disable()
 vim.opt.wrap = false

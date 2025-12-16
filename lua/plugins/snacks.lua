@@ -50,6 +50,10 @@ return {
             -- add the following keymap to your config
             -- ["<Esc>"] = { "close", mode = { "n", "i" } },
             ["<c-w>"] = { "cycle_win", mode = { "i", "n" } },
+            ["<c-h>"] = { function() 
+                local value = "file:'."
+                  vim.api.nvim_put({ value }, "c", true, true)
+            end , mode = { "i", "n" } },
           },
         },
         list = {

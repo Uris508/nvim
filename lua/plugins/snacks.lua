@@ -39,6 +39,17 @@ return {
             end,
           },
         },
+        grep_word = {
+          actions = {
+            toggle_live_for_file_type = function(picker) -- [[Override]]
+              picker.opts.live = false
+              picker.input:set()
+              picker.input:update()
+              local value = "file:'."
+              vim.api.nvim_put({ value }, "c", true, true)
+            end,
+          },
+        },
       },
       layouts = {
         vertical = {

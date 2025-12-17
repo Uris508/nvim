@@ -28,7 +28,7 @@ vim.keymap.set("n", "<leader>fN","<cmd>let @+=expand('%:t')<CR>",{ silent = fals
 vim.keymap.set("n", "<leader>ch", function()
   require("hex_reader").toggle()
 end, { desc = "Toggle hex reader." })
-vim.keymap.set("n", "<leader>o", "<CMD>Oil<CR>", { desc = "Open Oil.nvim" })
+-- vim.keymap.set("n", "<leader>o", "<CMD>Oil<CR>", { desc = "Open Oil.nvim" })
 vim.keymap.set("n", "c", "\"_c", { desc = "remove wo copy" })
 vim.keymap.set("", "q:", "", {})
 vim.keymap.set("n", "<leader>me", "<cmd>lua require('render-markdown').enable()<CR>", {silent = true, desc = "enable render markdown"})
@@ -249,3 +249,19 @@ end,{desc = "toggle diffview"})
 -- vim.keymap.set('v', '<Leader>cs',  "<cmd>lua require('codeshot').selected_lines()<CR>", {desc = "CodeShot"})
 vim.keymap.set('v', '<Leader>cs',  ":SSSelected", {desc = "CodeShot"})
 
+local function open_oil_at_last_buffer()
+  local last_buf_path = vim.fn.expand("%:.")
+      -- vim.notify(
+      --    last_buf_path,
+      --    vim.log.levels.info,
+      --    { title = "Project Path", timeout = 5000 }
+      -- )
+      --
+  if last_buf_path == "" then
+    require("oil").open()
+  else
+    require("oil").open(last_buf_path)
+    require("oil").open()
+  end
+end
+vim.keymap.set("n", "<leader>o", open_oil_at_last_buffer, { desc = "Open Oil.nvim" })

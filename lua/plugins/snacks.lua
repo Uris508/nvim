@@ -15,6 +15,19 @@ return {
       },
     },
     picker = {
+      sources = {
+        grep = {
+          actions = {
+            toggle_live_for_file_type = function(picker) -- [[Override]]
+              picker.opts.live = false
+              picker.input:set()
+              picker.input:update()
+              local value = "file:'."
+              vim.api.nvim_put({ value }, "c", true, true)
+            end,
+          },
+        },
+      },
       layouts = {
         vertical = {
           layout = {
@@ -50,10 +63,8 @@ return {
             -- add the following keymap to your config
             -- ["<Esc>"] = { "close", mode = { "n", "i" } },
             ["<c-w>"] = { "cycle_win", mode = { "i", "n" } },
-            ["<c-h>"] = { function() 
-                local value = "file:'."
-                  vim.api.nvim_put({ value }, "c", true, true)
-            end , mode = { "i", "n" } },
+            ["<c-h>"] = { "toggle_live_for_file_type", mode = { "i", "n" } },
+
           },
         },
         list = {

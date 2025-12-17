@@ -88,6 +88,12 @@ return {
             ["<c-w>"] = { "cycle_win", mode = { "i", "n" } },
             ["<c-h>"] = { "toggle_live_for_file_type", mode = { "i", "n" } },
             ["<c-b>"] = { "toggle_keyword", mode = { "i", "n" } },
+            ["<c-u>"] = { function() 
+              local value = ""
+              value = vim.api.nvim_get_current_line()
+              value = string.lower(value)
+              vim.api.nvim_set_current_line(value)
+            end , mode = { "i", "n" } },
           },
         },
         list = {

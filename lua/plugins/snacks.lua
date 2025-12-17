@@ -25,6 +25,18 @@ return {
               local value = "file:'."
               vim.api.nvim_put({ value }, "c", true, true)
             end,
+            toggle_keyword = function(picker) -- [[Override]]
+              local value = ""
+              vim.api.nvim_win_call(picker.input.win.win, function()
+                value = vim.api.nvim_get_current_line()
+                if value:match("^\\b.*\\b$") then
+                    value = value:sub(3, -3)
+                else
+                  value = "\\b"..value.."\\b"
+                end
+                vim.api.nvim_set_current_line(value)
+              end)
+            end,
           },
         },
       },
@@ -64,7 +76,7 @@ return {
             -- ["<Esc>"] = { "close", mode = { "n", "i" } },
             ["<c-w>"] = { "cycle_win", mode = { "i", "n" } },
             ["<c-h>"] = { "toggle_live_for_file_type", mode = { "i", "n" } },
-
+            ["<c-b>"] = { "toggle_keyword", mode = { "i", "n" } },
           },
         },
         list = {

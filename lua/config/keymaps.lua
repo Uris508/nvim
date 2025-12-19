@@ -36,6 +36,7 @@ vim.keymap.set("n", "<leader>md", "<cmd>lua require('render-markdown').disable()
 vim.keymap.set("n", "<leader>rr", "<cmd>edit!<CR>", {silent = true, desc = "reload buf"})
 vim.keymap.set("n", "<leader>df", "<cmd>windo diffthis<CR>", {silent = true, desc = "windo diffthis"})
 vim.keymap.set("v", "<leader>rs", "<cmd>s/\\%V\\\\/\\//g<CR>", {silent = true, desc = "replace to forward slash"})
+vim.keymap.set("n", "<leader>cp", "<cmd>Snap<CR>", {silent = true, desc = "Code Snap"})
 
 local function showcwd()
       local text = vim.fn.getcwd()
@@ -247,7 +248,9 @@ end,{desc = "toggle diffview"})
 
 -- Take screenshot just of selected lines
 -- vim.keymap.set('v', '<Leader>cs',  "<cmd>lua require('codeshot').selected_lines()<CR>", {desc = "CodeShot"})
-vim.keymap.set('v', '<Leader>cs',  ":SSSelected", {desc = "CodeShot"})
+
+vim.keymap.set("v" , "<leader>cp", ":Snap", {desc = "Code Snap"})
+-- vim.keymap.set('v', '<Leader>cs',  ":SSSelected", {desc = "CodeShot"})
 
 local function open_oil_at_last_buffer()
   local last_buf_path = vim.fn.expand("%:.")

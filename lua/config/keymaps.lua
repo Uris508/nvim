@@ -36,6 +36,7 @@ vim.keymap.set("n", "<leader>md", "<cmd>lua require('render-markdown').disable()
 vim.keymap.set("n", "<leader>rr", "<cmd>edit!<CR>", {silent = true, desc = "reload buf"})
 vim.keymap.set("n", "<leader>df", "<cmd>windo diffthis<CR>", {silent = true, desc = "windo diffthis"})
 vim.keymap.set("v", "<leader>rs", "<cmd>s/\\%V\\\\/\\//g<CR>", {silent = true, desc = "replace to forward slash"})
+vim.keymap.set("v", "<leader>rS", "<cmd>s/\\%V\\//\\\\/g<CR>", {silent = true, desc = "replace to backslash"})
 vim.keymap.set("n", "<leader>cp", "<cmd>Snap<CR>", {silent = true, desc = "Code Snap"})
 
 local function showcwd()

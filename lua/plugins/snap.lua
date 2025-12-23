@@ -1,25 +1,29 @@
 return
 {
   'mistweaverco/snap.nvim',
-  -- version = 'v1.0.3',
+  -- version = '1.1.0',
   opts = {
+    debug = {
+      backend = "bun",         -- Debug backend to use (currently only "bun" is supported)
+      log_level = "info",      -- Log level for debugging (e.g., "info", "debug", "error")
+    },
     timeout = 5000, -- Timeout for screenshot command in milliseconds
     template = "default", -- Template to use for rendering screenshots (currently only "default" is supported)
     templateFilepath = nil, -- Absolute path to a custom handlebars template file (optional), overrides 'template' option
     -- Additional data to pass to the your custom handlebars template (optional)
     additional_template_data = {
       author = "Uris Cheng",
-      website = "https://yourwebsite.com",
+      website = "https://www.inventec.com",
     },
-    output_dir = "t:/CodeSnap", -- Directory to save screenshots
+    -- output_dir = "t:/CodeSnap", -- Directory to save screenshots
     filename_pattern = "snap.nvim_%t", -- e.g., "snap.nvim_%t" (supports %t for timestamp)
     copy_to_clipboard = {
         image = true, -- Whether to copy the image to clipboard
-        html = true, -- Whether to copy the HTML to clipboard
+        html = false, -- Whether to copy the HTML to clipboard
     },
     font_settings = {
       size = 14,         -- Default font size for the screenshot
-      line_height = 0.9, -- Default line height for the screenshot
+      line_height = 0.7, -- Default line height for the screenshot
       default = {
         name = "Terminess Nerd Font", -- Default font name for the screenshot
         file = nil,         -- Absolute path to a custom font file (.ttf) (optional)
@@ -54,8 +58,4 @@ return
   -- defaults to nil
   -- if set, no pre-compiled binaries will be downloaded
   -- and the plugin will attempt to run directly from source
-  debug = {
-    backend = "bun",         -- Debug backend to use (currently only "bun" is supported)
-    log_level = "info",      -- Log level for debugging (e.g., "info", "debug", "error")
-  },
 }

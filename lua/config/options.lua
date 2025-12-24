@@ -10,17 +10,18 @@ vim.opt.timeoutlen = 40
 vim.g.uris_logo = 'chafa c:/logo/doom/doom3.png --format symbols --size 46x46'
 local hr = tonumber(os.date('%H', os.time()))
 if hr > 8 and hr <= 10 then 
-  vim.g.uris_logo = 'chafa %localappdata%/nvim/doom/Gemini_Generated_sandy.png --format symbols --symbols vhalf --size 50x60'
+  vim.g.uris_logo = 'chafa %localappdata%/nvim/doom/Gemini_Generated_sandy.png --format symbols --symbols sextant --size 50x60'
 elseif hr > 10 and hr <= 12 then 
-  vim.g.uris_logo = 'chafa %localappdata%/nvim/doom/Gemini_Generated_Krabs.png --format symbols --symbols vhalf --size 50x60'
+  vim.g.uris_logo = 'chafa %localappdata%/nvim/doom/Gemini_Generated_Krabs.png --format symbols --symbols sextant --size 50x60'
 elseif hr > 12 and hr <= 14 then 
-  vim.g.uris_logo = 'chafa %localappdata%/nvim/doom/Gemini_Generated_Patrick.png --format symbols --symbols vhalf --size 50x60'
+  vim.g.uris_logo = 'chafa %localappdata%/nvim/doom/Gemini_Generated_Patrick.png --format symbols --symbols sextant --size 50x60'
 elseif hr > 14 and hr <= 16 then 
-  vim.g.uris_logo = 'chafa %localappdata%/nvim/doom/Gemini_Generated_SpongeBob.png --format symbols --symbols vhalf --size 50x60'
+  vim.g.uris_logo = 'chafa %localappdata%/nvim/doom/Gemini_Generated_SpongeBob.png --format symbols --symbols sextant --size 50x60'
 elseif hr > 16 and hr <= 18 then 
-  vim.g.uris_logo = 'chafa %localappdata%/nvim/doom/Gemini_Generated_Squidward.png --format symbols --symbols vhalf --size 50x60'
+  vim.g.uris_logo = 'chafa %localappdata%/nvim/doom/Gemini_Generated_Squidward.png --format symbols --symbols sextant --size 50x60'
 elseif hr > 18 and hr <= 21 then 
-  vim.g.uris_logo = 'chafa %localappdata%/nvim/doom/Gemini_Generated_Plankton.png --format symbols --symbols vhalf --size 50x60'
+  vim.g.uris_logo = 'chafa %localappdata%/nvim/doom/Gemini_Generated_Plankton.png --format symbols --symbols sextant --size 50x60'
 else 
-  vim.g.uris_logo = 'chafa %localappdata%/nvim/doom/Gemini_Generated_FlyingDutchman.png --format symbols --symbols vhalf --size 50x60'
+  vim.g.uris_logo = 'chafa %localappdata%/nvim/doom/Gemini_Generated_FlyingDutchman.png --format symbols --symbols sextant --size 50x60'
 end
+  -- vim.g.uris_logo = 'chafa %localappdata%/nvim/doom/Gemini_wot_m48.png  --format symbols --symbols sextant --size 60x60'

@@ -1,7 +1,7 @@
 return
 {
   'mistweaverco/snap.nvim',
-  -- version = '1.1.0',
+  -- version = '1.2.1',
   opts = {
     debug = {
       backend = "bun",         -- Debug backend to use (currently only "bun" is supported)
@@ -15,11 +15,11 @@ return
       author = "Uris Cheng",
       website = "https://www.inventec.com",
     },
-    -- output_dir = "t:/CodeSnap", -- Directory to save screenshots
+    output_dir = "t:/CodeSnap", -- Directory to save screenshots
     filename_pattern = "snap.nvim_%t", -- e.g., "snap.nvim_%t" (supports %t for timestamp)
     copy_to_clipboard = {
         image = true, -- Whether to copy the image to clipboard
-        html = false, -- Whether to copy the HTML to clipboard
+        html = true, -- Whether to copy the HTML to clipboard
     },
     font_settings = {
       size = 14,         -- Default font size for the screenshot

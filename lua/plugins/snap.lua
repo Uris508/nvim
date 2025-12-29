@@ -1,12 +1,15 @@
 return
 {
   'mistweaverco/snap.nvim',
-  -- version = '1.2.1',
+  -- version = '1.3.1',
   opts = {
-    debug = {
-      backend = "bun",         -- Debug backend to use (currently only "bun" is supported)
-      log_level = "info",      -- Log level for debugging (e.g., "info", "debug", "error")
+    development_mode = {
+      backend = "bun",  -- Development mode backend to use (currently only "bun" is supported)
     },
+    debug = {
+      backend = "bun",  -- Development mode backend to use (currently only "bun" is supported)
+    },
+    -- log_level = "trace",
     timeout = 5000, -- Timeout for screenshot command in milliseconds
     template = "default", -- Template to use for rendering screenshots (currently only "default" is supported)
     templateFilepath = nil, -- Absolute path to a custom handlebars template file (optional), overrides 'template' option

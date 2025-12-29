@@ -21,7 +21,8 @@ elseif hr > 16 and hr <= 18 then
   vim.g.uris_logo = 'chafa %localappdata%/nvim/doom/Gemini_Generated_Squidward.png --format symbols --symbols sextant --size 50x60'
 elseif hr > 18 and hr <= 21 then 
   vim.g.uris_logo = 'chafa %localappdata%/nvim/doom/Gemini_Generated_Plankton.png --format symbols --symbols sextant --size 50x60'
-else 
+elseif hr > 21 and hr <= 23 then 
   vim.g.uris_logo = 'chafa %localappdata%/nvim/doom/Gemini_Generated_FlyingDutchman.png --format symbols --symbols sextant --size 50x60'
+else 
+  vim.g.uris_logo = 'chafa %localappdata%/nvim/doom/Gemini_Ricky.png --format symbols --symbols sextant --size 50x60'
 end
-  -- vim.g.uris_logo = 'chafa %localappdata%/nvim/doom/Gemini_wot_m48.png  --format symbols --symbols sextant --size 60x60'

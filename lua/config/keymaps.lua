@@ -270,3 +270,4 @@ local function open_oil_at_last_buffer()
 end
 vim.keymap.set("n", "<leader>o", open_oil_at_last_buffer, { desc = "Open Oil.nvim" })
 vim.keymap.set("n", "<leader>C","<cmd>Calendar<CR>",{ silent = false, desc = "Calendar" })
+vim.keymap.set("n", "<leader>k","<cmd>Screenkey toggle<CR>",{ silent = false, desc = "Screenkey toggle" })

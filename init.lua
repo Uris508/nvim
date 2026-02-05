@@ -39,6 +39,7 @@ end
 require('smear_cursor').enabled = false
 vim.diagnostic.disable()
 vim.opt.wrap = false
+vim.cmd('colorscheme catppuccin')
 
 -- local actions = require "telescope.actions"
 --

@@ -1,3 +1,4 @@
 return {
-  'kokusenz/deltaview.nvim'
+  'kokusenz/deltaview.nvim',
+  lazy = true
 }

@@ -37,7 +37,7 @@ if vim.g.neovide then
   require('smear_cursor').enabled = false
 end
 require('smear_cursor').enabled = false
-vim.diagnostic.disable()
+vim.diagnostic.enable(false)
 vim.opt.wrap = false
 vim.cmd('colorscheme catppuccin')
 

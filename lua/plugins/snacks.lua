@@ -86,7 +86,7 @@ return {
             -- add the following keymap to your config
             -- ["<Esc>"] = { "close", mode = { "n", "i" } },
             ["<c-w>"] = { "cycle_win", mode = { "i", "n" } },
-            ["<c-h>"] = { "toggle_live_for_file_type", mode = { "i", "n" } },
+            ["<c-t>"] = { "toggle_live_for_file_type", mode = { "i", "n" } },
             ["<c-b>"] = { "toggle_keyword", mode = { "i", "n" } },
             ["<c-u>"] = { function() 
               local value = ""

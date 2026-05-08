@@ -275,3 +275,18 @@ vim.keymap.set("n", "<leader>dl", "<cmd>lua require('deltaview.commands').setup(
 vim.keymap.set("n", "<leader>dm", "<cmd>lua require('deltaview.commands').setup()<CR><cmd>DeltaMenu<CR>", { silent = false, desc ="DeltaMenu"})
 vim.keymap.set("n", "<leader>da", "<cmd>lua require('deltaview.commands').setup()<CR><cmd>Delta<CR>", { silent = false, desc ="Delta"})
 vim.keymap.set("n", "<leader>ux", "<cmd>ScreensaverToggle<CR>", { silent = false, desc ="ScreensaverToggle"})
+
+local function compare_with_bc()
+    local current_file = vim.fn.expand('%:p')
+    local target_file = current_file
+    -- local target_file = vim.fn.input('Compare with: ', '', 'file')
+    
+    
+    if target_file ~= "" then
+        local bc_path = "bcomp" 
+        os.execute(string.format('start /B %s "%s" "%s" &', bc_path, current_file, target_file))
+    end
+end
+
+vim.keymap.set('n', '<leader>bc', compare_with_bc, { desc = 'Open Beyond Compare' })
+

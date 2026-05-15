@@ -32,7 +32,7 @@ if vim.g.neovide then
   vim.g.transparency = 0.9
   vim.g.neovide_background_color = "#0f1117" .. alpha()
   vim.g.neovide_cursor_trail_size = 1.0
-  vim.g.neovide_cursor_animation_length = 0.5
+  vim.g.neovide_cursor_animation_length = 0.13
   vim.g.neovide_cursor_animate_in_insert_mode = true
   vim.g.snacks_animate = false
   vim.g.neovide_cursor_vfx_mode = "pixiedust"

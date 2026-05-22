@@ -1,4 +1,7 @@
 return {
-  'kokusenz/deltaview.nvim',
-  lazy = true
+    'kokusenz/deltaview.nvim',
+    dependencies = {
+        "kokusenz/delta.lua",
+    },
+    lazy=true
 }

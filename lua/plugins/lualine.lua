@@ -33,13 +33,6 @@
             }
           },
 
-          -- ✨ 補上 lualine_b，讓 git branch 重新顯示
-          lualine_b = {
-            'branch',      -- 這裡就是你消失的 git branch 名稱
-            'diff',        -- git 的檔案增刪更改狀態
-            'diagnostics', -- LSP 語法檢查的錯誤與警告
-          },
-
           lualine_c = {
             {
               'filename',

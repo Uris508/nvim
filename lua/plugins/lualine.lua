@@ -10,33 +10,35 @@
           theme = 'auto',
         },
         sections = {
-          -- Add the macro recording status in the mode section
-          lualine_a = {function()
-            local reg = vim.fn.reg_recording()
-            -- If a macro is being recorded, show "Recording @<register>"
-            if reg ~= "" then
-              return "Recording @" .. reg
-            else
-              -- Get the full mode name using nvim_get_mode()
-              local mode = vim.api.nvim_get_mode().mode
-              local mode_map = {
-                n = 'NORMAL',
-                i = 'INSERT',
-                v = 'VISUAL',
-                V = 'V-LINE',
-                ['\22'] = 'V-BLOCK',
-                c = 'COMMAND',
-                R = 'REPLACE',
-                s = 'SELECT',
-                S = 'S-LINE',
-                ['\19'] = 'S-BLOCK',
-                t = 'TERMINAL',
-              }
+          lualine_a = {
+            {
+              'mode',
+              -- 1. 使用 fmt 動態改變文字內容
+              fmt = function(str)
+                local reg = vim.fn.reg_recording()
+                if reg ~= "" then
+                  return "MACRO @" .. reg
+                end
+                return str
+              end,
 
-              -- Return the full mode name
-              return mode_map[mode] or mode:upper()
-            end
-          end},
+              -- 2. 使用 color 動態改變顏色 (這裡範例使用紅底白字，可依喜好修改)
+              color = function()
+                local reg = vim.fn.reg_recording()
+                if reg ~= "" then
+                  return { bg = "#e06c75", fg = "#e5c07b", gui = "bold" }
+                end
+                return nil
+              end,
+            }
+          },
+
+          -- ✨ 補上 lualine_b，讓 git branch 重新顯示
+          lualine_b = {
+            'branch',      -- 這裡就是你消失的 git branch 名稱
+            'diff',        -- git 的檔案增刪更改狀態
+            'diagnostics', -- LSP 語法檢查的錯誤與警告
+          },
 
           lualine_c = {
             {
@@ -45,6 +47,11 @@
               show_filename_only = false,
             },
           },
+
+          -- 💡 建議也補上右半邊的預設元件，否則右邊會空無一物
+          lualine_x = { 'encoding', 'fileformat', 'filetype' }, -- 檔案編碼、格式、類型
+          lualine_y = { 'progress' },                           -- 檔案瀏覽進度百分比
+          lualine_z = { 'location' },                           -- 目前的游標行號與列號
         },
       })
     end

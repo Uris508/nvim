@@ -1,3 +1,0 @@
-return {
-'kokusenz/delta.lua'
-}

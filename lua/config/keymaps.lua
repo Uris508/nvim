@@ -76,7 +76,7 @@ local function OpenCurrentBufferPath()
   local path = vim.fn.expand("%:p:h")
   -- vim.print(path)
   -- return os.execute('explorer ' .. path)
-  return os.execute('start onecommander ' .. path)
+  return os.execute('start onecommander ' .. '"'.. path .. '"')
 end
 vim.keymap.set("n", "<leader>fo", OpenCurrentBufferPath, { silent = false, desc = "Open file folder" })
 

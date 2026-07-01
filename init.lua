@@ -42,6 +42,8 @@ require('smear_cursor').enabled = false
 vim.diagnostic.enable(false)
 vim.opt.wrap = false
 vim.cmd('colorscheme catppuccin-mocha')
+vim.opt.swapfile = false
+vim.opt.undofile = true
 
 -- local actions = require "telescope.actions"
 --

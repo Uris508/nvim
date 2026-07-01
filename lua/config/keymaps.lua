@@ -315,3 +315,20 @@ end
 
 vim.keymap.set('n', '<leader>bc', compare_with_bc, { desc = 'Open Beyond Compare' })
 
+vim.keymap.set("n", "<leader>gl", function()
+  Snacks.picker.git_log({
+    confirm = function(picker)
+      local item = picker:current()
+      picker:close()
+
+      local hash = item and (item.sha or item.commit or item.id)
+      if hash then
+        vim.cmd("DiffviewOpen " .. hash .. "^!")
+      end
+    end,
+  })
+end, { desc = "Git Log (Diffview)" })
+
+vim.keymap.set("n", "<leader>gf", function()
+  vim.cmd("DiffviewFileHistory %")
+end, { desc = "Git Current File History (Diffview)" })

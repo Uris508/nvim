@@ -11,6 +11,7 @@ vim.keymap.set("", "<leader>gs", "<cmd>lua require('snacks').picker.git_status()
 vim.keymap.set("v", "<leader>gb", "<cmd>lua require('snacks').git.blame_line()<CR>", { silent = false, desc ="snacks blame line"})
 vim.keymap.set("", "<leader>sR", "<cmd>lua require('snacks').picker.resume()<CR>", { silent = false, desc ="Resume"})
 vim.keymap.set("n", "<leader>fb", "<cmd>lua require('snacks').picker.buffers()<CR>", { silent = false, desc ="Buffers"})
+vim.keymap.set("n", "<leader>bt", "<cmd>lua require('snacks').picker.treesitter()<CR>", { silent = false, desc ="tree-sitter"})
 -- vim.keymap.set("n", "<leader>s/", "<cmd>lua require('fzf-lua').grep()<CR>", { silent = true , desc = "fzf grep search"})
 -- vim.api.nvim_set_keymap("n", "<Leader>sb",
 --   [[<cmd>lua require('telescope').extensions.recent_files.pick()<CR>]],

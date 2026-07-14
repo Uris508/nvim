@@ -39,8 +39,8 @@ vim.keymap.set("n", "<leader>df", "<cmd>windo diffthis<CR>", {silent = true, des
 vim.keymap.set("v", "<leader>rs", "<cmd>s/\\%V\\\\/\\//g<CR>", {silent = true, desc = "replace to forward slash"})
 vim.keymap.set("v", "<leader>rS", "<cmd>s/\\%V\\//\\\\/g<CR>", {silent = true, desc = "replace to backslash"})
 vim.keymap.set("n", "<leader>cp", "<cmd>Snap html<CR>", {silent = true, desc = "Code Snap"})
-vim.keymap.set("n", "<C-k>", ":m .-2<CR>==", { silent = true })
-vim.keymap.set("n", "<C-j>", ":m .+1<CR>==", { silent = true })
+vim.keymap.set("n", "<C-m>", ":m .+1<CR>==", { silent = true })
+vim.keymap.set("n", "<C-n>", ":m .-2<CR>==", { silent = true })
 
 local function showcwd()
       local text = vim.fn.getcwd()

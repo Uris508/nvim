@@ -45,6 +45,13 @@ vim.cmd('colorscheme catppuccin-mocha')
 vim.opt.swapfile = false
 vim.opt.undofile = true
 
+-- 將 :W 映射為 :w
+vim.api.nvim_create_user_command('W', 'w', {})
+
+-- 如果你也常把 :wq 按成 :Wq 或 :WQ，可以順便加上：
+vim.api.nvim_create_user_command('Wq', 'wq', {})
+vim.api.nvim_create_user_command('WQ', 'wq', {})
+vim.api.nvim_create_user_command('Q', 'q', {})
 -- local actions = require "telescope.actions"
 --
 -- require("telescope").setup({

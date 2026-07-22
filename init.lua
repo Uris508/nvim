@@ -35,9 +35,9 @@ if vim.g.neovide then
   vim.g.neovide_cursor_animation_length = 0.18
   vim.g.neovide_cursor_animate_in_insert_mode = true
   vim.g.neovide_cursor_vfx_mode = "raygun"
-  require('smear_cursor').enabled = false
+  -- require('smear_cursor').enabled = false
 end
-require('smear_cursor').enabled = false
+-- require('smear_cursor').enabled = false
 vim.diagnostic.enable(false)
 vim.opt.wrap = false
 vim.cmd('colorscheme catppuccin-mocha')

@@ -45,6 +45,7 @@ vim.cmd('colorscheme catppuccin-mocha')
 vim.opt.swapfile = false
 vim.opt.undofile = true
 
+vim.keymap.set('t', '<C-]>', '<C-\\><C-n>')
 -- 將 :W 映射為 :w
 vim.api.nvim_create_user_command('W', 'w', {})
 

@@ -1,6 +1,7 @@
 return
 {
   'mistweaverco/snap.nvim',
+  event = "VeryLazy",
   -- version = '1.3.1',
   opts = {
     development_mode = {

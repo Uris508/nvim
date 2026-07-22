@@ -1,5 +1,6 @@
 return {
   "LunarVim/bigfile.nvim",
+  event = "VeryLazy",
   config = function()
     local bf = require("bigfile")
     bf.setup {

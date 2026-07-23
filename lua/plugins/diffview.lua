@@ -32,6 +32,11 @@ return {
               { desc = "previous diff" },
             },
           },
+          file_history_panel  = {
+            { "n", "q", "<cmd>DiffviewClose<cr>", { desc = "Close Diffview" } },
+            { "n", "<c-k>",          actions.scroll_view(-0.25),             { desc = "Scroll the view up" } },
+            { "n", "<c-j>",          actions.scroll_view(0.25),              { desc = "Scroll the view down" } },
+          },
         },
         hooks = {
           -- 在進入 diff 視窗時自動展開所有摺疊

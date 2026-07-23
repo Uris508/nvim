@@ -15,4 +15,12 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
+-- 當進入 command-line window (CmdwinEnter) 時自動關閉並退出
+vim.api.nvim_create_autocmd("CmdwinEnter", {
+  group = vim.api.nvim_create_augroup("DisableCmdLineWindow", { clear = true }),
+  callback = function()
+    vim.cmd("quit")
+  end,
+})
+
 

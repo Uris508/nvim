@@ -385,3 +385,67 @@ end
 -- 設定快捷鍵（例如按下 <leader>id 插入 GUID）
 vim.keymap.set('n', '<leader>cuu', insert_uuid, { desc = 'Insert UUID' })
 vim.keymap.set('n', '<leader>cug', insert_c_struct_guid, { desc = 'Insert C struct GUID'})
+
+local function convert_uuid_to_c_struct_in_line()
+  local line = vim.api.nvim_get_current_line()
+
+  -- 使用 string.gsub 進行局部替換
+  local new_line, count = line:gsub(
+    "(%x%x%x%x%x%x%x%x)%-(%x%x%x%x)%-(%x%x%x%x)%-(%x%x)(%x%x)%-(%x%x)(%x%x)(%x%x)(%x%x)(%x%x)(%x%x)",
+    function(p1, p2, p3, p4_1, p4_2, p5_1, p5_2, p5_3, p5_4, p5_5, p5_6)
+      return string.format(
+        "{ 0x%s, 0x%s, 0x%s, {0x%s, 0x%s, 0x%s, 0x%s, 0x%s, 0x%s, 0x%s, 0x%s} }",
+        p1, p2, p3, p4_1, p4_2, p5_1, p5_2, p5_3, p5_4, p5_5, p5_6
+      )
+    end
+  )
+
+  if count == 0 then
+    vim.notify("can't find uuid format string", vim.log.levels.WARN)
+    return false
+  end
+
+  vim.api.nvim_set_current_line(new_line)
+  return true
+end
+
+local function convert_c_struct_to_uuid_in_line()
+  local line = vim.api.nvim_get_current_line()
+
+  -- 自動補 0 的輔助函式
+  local function pad(hex, length)
+    return string.format("%0" .. length .. "x", tonumber(hex, 16))
+  end
+
+  -- 匹配包含大括號的完整 C 結構特徵並進行局部替換
+  local pattern = "{%s*0x(%x+)%s*,%s*0x(%x+)%s*,%s*0x(%x+)%s*,%s*{%s*0x(%x+)%s*,%s*0x(%x+)%s*,%s*0x(%x+)%s*,%s*0x(%x+)%s*,%s*0x(%x+)%s*,%s*0x(%x+)%s*,%s*0x(%x+)%s*,%s*0x(%x+)%s*}%s*}"
+
+  local new_line, count = line:gsub(
+    pattern,
+    function(d1, d2, d3, b1, b2, b3, b4, b5, b6, b7, b8)
+      return string.format(
+        "%s-%s-%s-%s%s-%s%s%s%s%s%s",
+        pad(d1, 8), pad(d2, 4), pad(d3, 4),
+        pad(b1, 2), pad(b2, 2),
+        pad(b3, 2), pad(b4, 2), pad(b5, 2), pad(b6, 2), pad(b7, 2), pad(b8, 2)
+      )
+    end
+  )
+
+  if count == 0 then
+    vim.notify("can't find c struct guid format string", vim.log.levels.WARN)
+    return false
+  end
+
+  vim.api.nvim_set_current_line(new_line)
+  return true
+end
+
+local function toggle_guid_format()
+  -- 先嘗試轉為標準 UUID；若失敗則嘗試轉為 C 結構
+  if not convert_c_struct_to_uuid_in_line() then
+    convert_uuid_to_c_struct_in_line()
+  end
+end
+
+vim.keymap.set('n', '<leader>cut', toggle_guid_format, { desc = 'Toggle GUID Format' })

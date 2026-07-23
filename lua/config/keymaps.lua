@@ -334,3 +334,54 @@ end, { desc = "Git Log (Diffview)" })
 vim.keymap.set("n", "<leader>gf", function()
   vim.cmd("DiffviewFileHistory %")
 end, { desc = "Git Current File History (Diffview)" })
+
+-- 建立一個產生 UUID 的函式並插入游標處
+local function insert_uuid()
+  local template ='xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'
+  local uuid = string.gsub(template, '[xy]', function (c)
+    local v = (c == 'x') and math.random(0, 0xf) or math.random(8, 0xb)
+    return string.format('%x', v)
+  end)
+  
+  -- 插入到當前游標位置
+  local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+  vim.api.nvim_buf_set_text(0, row - 1, col, row - 1, col, { uuid })
+end
+
+local function insert_c_struct_guid()
+  -- 設定隨機數種子（確保每次產生的不重複）
+  math.randomseed(os.time() + os.clock() * 100000)
+
+  -- Data1: 32-bit (8 個十六進位字元)
+  local d1 = string.format("0x%08x", math.random(0, 0xffffffff))
+
+  -- Data2: 16-bit (4 個十六進位字元)
+  local d2 = string.format("0x%04x", math.random(0, 0xffff))
+
+  -- Data3: 16-bit (UUID v4 規範第一個字元通常固定為 4)
+  local d3 = string.format("0x%04x", math.random(0x4000, 0x4fff))
+
+  -- Data4: 8 個 8-bit Byte
+  local d4_bytes = {}
+  -- 第一個 byte 依照 UUID v4 規範限制範圍為 0x80~0xbf
+  table.insert(d4_bytes, string.format("0x%02x", math.random(0x80, 0xbf)))
+  for _ = 2, 8 do
+    table.insert(d4_bytes, string.format("0x%02x", math.random(0x00, 0xff)))
+  end
+
+  -- 組合成 C 語言 GUID 結構字串
+  local guid_str = string.format(
+    "{ %s, %s, %s, {%s} }",
+    d1,
+    d2,
+    d3,
+    table.concat(d4_bytes, ", ")
+  )
+
+  -- 取得目前游標位置並插入字串
+  local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+  vim.api.nvim_buf_set_text(0, row - 1, col, row - 1, col, { guid_str })
+end
+-- 設定快捷鍵（例如按下 <leader>id 插入 GUID）
+vim.keymap.set('n', '<leader>cuu', insert_uuid, { desc = 'Insert UUID' })
+vim.keymap.set('n', '<leader>cug', insert_c_struct_guid, { desc = 'Insert C struct GUID'})

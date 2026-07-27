@@ -1,6 +1,9 @@
 return
 {
-  'mistweaverco/snap.nvim',
+  -- 'mistweaverco/snap.nvim',
+  dir = "~/AppData/Local/nvim-data/lazy/snap.nvim",
+  name = "snap.nvim",
+
   event = "VeryLazy",
   -- version = '1.3.1',
   opts = {

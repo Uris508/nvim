@@ -22,9 +22,6 @@ end
 
 vim.keymap.set("n", "<leader>D", "<cmd>lua require('snacks').dashboard.open()<CR>", { silent = false, desc = "Open Dashboard" })
 vim.keymap.set("n", "<leader>fN","<cmd>let @+=expand('%:t')<CR>",{ silent = false, desc = "Copy file name" })
-vim.keymap.set("n", "<leader>ch", function()
-  require("hex_reader").toggle()
-end, { desc = "Toggle hex reader." })
 vim.keymap.set("n", "c", "\"_c", { desc = "remove wo copy" })
 vim.keymap.set('n', 'q:', '<Nop>', { noremap = true, silent = true, nowait = true })
 vim.keymap.set("n", "<leader>me", "<cmd>lua require('render-markdown').enable()<CR>", {silent = true, desc = "enable render markdown"})

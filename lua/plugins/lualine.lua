@@ -8,7 +8,12 @@
         options = {
           icons_enabled = true,
           theme = 'auto',
+          disabled_filetypes = {
+            statusline = { 'snacks_dashboard' }, -- 隱藏底部狀態列
+            winbar = { 'snacks_dashboard' },     -- 如果你有啟用頂部 winbar 也可以一併隱藏
+          },
         },
+
         sections = {
           lualine_a = {
             {

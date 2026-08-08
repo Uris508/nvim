@@ -1,4 +1,4 @@
 return {
-  'wsdjeg/calendar.nvim',
-  event = "VeryLazy",
+  -- 'wsdjeg/calendar.nvim',
+  -- event = "VeryLazy",
 }

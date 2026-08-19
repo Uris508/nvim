@@ -3,7 +3,7 @@ return {
   event = "VeryLazy",
   config = function()
     require("screensaver").setup({
-      idle_ms = 180 * 1000, -- Idle time in milliseconds (5 minute)
+      idle_ms = 300 * 1000, -- Idle time in milliseconds (5 minute)
       animations = {
           "matrix",
           -- "rain",

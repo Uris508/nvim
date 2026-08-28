@@ -38,5 +38,4 @@ vim.keymap.set("v" , "<leader>cp", ":Snap html", {desc = "Code Snap"})
 -- vim.keymap.set('v', '<Leader>cs',  ":SSSelected", {desc = "CodeShot"})
 vim.keymap.set("n", "<leader>k","<cmd>Screenkey toggle<CR>",{ silent = false, desc = "Screenkey toggle" })
 vim.keymap.set("n", "<leader>ux", "<cmd>ScreensaverToggle<CR>", { silent = false, desc ="ScreensaverToggle"})
-
-
+vim.keymap.set("n", "<leader>rt", "<cmd>restart<CR>", { silent = false, desc ="restart neovim"})

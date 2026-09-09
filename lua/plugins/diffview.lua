@@ -62,6 +62,15 @@ return {
           diff_buf_win_enter = function(bufnr, winid, ctx)
             vim.opt_local.foldenable = false
           end,
+          view_opened = function(view)
+            vim.bo.modifiable = true
+            -- 重寫轉義字元後發送 <C-c>
+            vim.api.nvim_feedkeys(
+              vim.api.nvim_replace_termcodes("<C-c>", true, false, true),
+              "i",
+              false
+            )
+          end,
         },
       })
     end

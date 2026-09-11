@@ -52,6 +52,16 @@ vim.api.nvim_create_user_command('W', 'w', {})
 vim.api.nvim_create_user_command('Wq', 'wq', {})
 vim.api.nvim_create_user_command('WQ', 'wq', {})
 vim.api.nvim_create_user_command('Q', 'q', {})
+
+vim.api.nvim_create_autocmd("VimEnter", {
+  group = vim.api.nvim_create_augroup("FixFiletypeOnRestart", { clear = true }),
+  callback = function()
+    -- 延遲一個 event loop Tick，確保所有 buffer 已完全載入
+    vim.schedule(function()
+      vim.cmd("bufdo filetype detect")
+    end)
+  end,
+})
 -- local actions = require "telescope.actions"
 --
 -- require("telescope").setup({

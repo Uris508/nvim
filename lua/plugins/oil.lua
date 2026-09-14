@@ -9,6 +9,10 @@ return {
       require("oil").setup({
         default_file_explorer = true,
         use_default_keymaps = false,
+        win_options = {
+          signcolumn = "yes:2",
+          statuscolumn = "",
+        },
         keymaps = {
             ["g?"] = { "actions.show_help", mode = "n" },
             ["<CR>"] = "actions.select",

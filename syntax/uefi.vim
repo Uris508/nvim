@@ -8,7 +8,7 @@
 " 2. Add the following to ~/.vimrc:
 "
 " augroup filetype
-"   au BufRead,BufNewFile *.xxx,  setfiletype uefi
+"    au BufRead,BufNewFile *.xxx,  setfiletype uefi
 " augroup end
 "
 
@@ -25,7 +25,7 @@ syn case match
 " Comments: {{{1
 " "==========
  syn cluster    efiCommentGroup contains=efiTodo
- syn keyword    efiTodo         contained FIXME TODO XXX
+ syn keyword    efiTodo          contained FIXME TODO XXX
  syn match      efiComment       "^\s*\zs#.*$"   contains=@efiCommentGroup
  syn match      efiComment       "\s\zs#.*$"     contains=@efiCommentGroup
  syn match      efiQuickComment  contained  "#.*$"
@@ -45,16 +45,18 @@ syn case match
  syn match      efiFloat    "\M\<\d\+.\d\+\>"
  syn match      efiInt      "\M\<\d\+\>\ze\(-\)\@!"
  syn region     efiString   start=+L\="+ skip=+\\"+ end=+"+
- syn keyword    efiBoolean TRUE FALSE
+ syn keyword    efiBoolean TRUE FALSE YES NO
 
 " Idioms: {{{1
 " "==========
- syn match      efiToken    "\M\<g\i\+TokenSpaceGuid.Pcd\i\+\>"
- syn match      efiPath     "\M/\=\(\w\+/\)\+\(\w\|.\|-\)\+\>"
- syn match      efiSource   "\M\s\+\zs\u\w\*.\w\+\ze\s\=$"
- syn match      efiLib      "\M\<\u\w\*Lib\>\ze\(/\|.\)\@!"
- syn match      efiPoint    "\M\<\u\w\*Point\>\ze\(/\)\@!"
- syn match      efiPreprocessor "\v^!((endif|else|include)|(if|ifndef|ifdef)\s+\$\(\i+\)).*$"
+ syn match      efiPcdName "\v[a-zA-Z0-9_]+" contained
+ syn match      efiTokenSpaceGuid "\v<g[a-zA-Z0-9_]+Guid\." nextgroup=efiPcdName
+ syn match      efiToken "\v<g[a-zA-Z0-9_]+Guid\.[a-zA-Z0-9_]+" contains=efiTokenSpaceGuid,efiPcdName
+ syn match      efiPath      "\M/\=\(\w\+/\)\+\(\w\|.\|-\)\+\>"
+ syn match      efiSource    "\M\s\+\zs\u\w\*.\w\+\ze\s\=$"
+ syn match      efiLib       "\M\<\u\w\*Lib\>\ze\(/\|.\)\@!"
+ syn match      efiPoint     "\M\<\u\w\*Point\>\ze\(/\)\@!"
+ syn match      efiPreprocessor "\v^\s*!\w+"
  syn match      efiArchSection  "\v\.(I(a|A)32|(x|X)64|IPF|E(bc|BC)|ARM|(c|C)ommon|USER_DEFINED)"
  syn match      efiArchConst    "\v\|=\zs(IA32|X64|IPF|EBC|ARM|common|Ebc|USER_DEFINED)\ze\|=/@!"
  syn match      efiEnv          "\M$(\w\+)"
@@ -65,17 +67,19 @@ syn case match
 
 " Useful keywords for headers: {{{1
 " "==========
- syn keyword    efiSection Defines Sources BuildOptions Binaries Includes Protocols Ppis Guids LibraryClasses Packages Dupex UserExtensions FeaturePcd Pcd FixedPcd PatchPcd PcdEx Depex UserExtensions PcdFeatureFlag PcdsFixedAtBuild PcdsPatchableInModule PcdsDynamic PcdsDinamicEx PcdsFeatureFlag PcdsDynamicEx SkuIds Libraries Components
+ syn keyword    efiSection Defines Sources BuildOptions Binaries Includes Protocols Ppis Guids LibraryClasses Packages Dupex UserExtensions FeaturePcd Pcd FixedPcd PatchPcd PcdEx Depex UserExtensions PcdFeatureFlag PcdsFixedAtBuild PcdsPatchableInModule PcdsDynamic PcdsDinamicEx PcdsFeatureFlag PcdsDynamicEx SkuIds Libraries Components PcdsDynamicExDefault
+ syn keyword    efiImport  import IMPORT
+ syn keyword    efiDefine  DEFINE
 
 " Any useful keywords: {{{1
 " "==========
- syn keyword    infDefineSection INF_VERSION BASE_NAME EDK_RELEASE_VERSION PI_SPECIFICATION_VERSION UEFI_SPECIFICATION_VERSION FILE_GUID MODULE_TYPE VERSION_STRING LIBRARY_CLASS PCD_IS_DRIVER ENTRY_POINT UNLOAD_IMAGE CONSTRUCTOR DESTRUCTOR SHADOW PCI_DEVICE_ID PCI_VENDOR_ID PCI_CLASS_CODE PCI_COMPRESS UEFI_HII_RESOURCE_SECTION DEFINE SPEC CUSTOM_MAKEFILE DPX_SOUCE
+ syn keyword    infDefineSection INF_VERSION BASE_NAME EDK_RELEASE_VERSION PI_SPECIFICATION_VERSION UEFI_SPECIFICATION_VERSION FILE_GUID MODULE_TYPE VERSION_STRING LIBRARY_CLASS PCD_IS_DRIVER ENTRY_POINT UNLOAD_IMAGE CONSTRUCTOR DESTRUCTOR SHADOW PCI_DEVICE_ID PCI_VENDOR_ID PCI_CLASS_CODE PCI_COMPRESS UEFI_HII_RESOURCE_SECTION SPEC CUSTOM_MAKEFILE DPX_SOUCE
  syn keyword    decDefineSection DEC_VERSION DEC_SPECIFICATION PACKAGE_NAME PACKAGE_GUID PACKAGE_VERSION
  syn keyword    dscDefineSection DSC_VERSION DSC_SPECIFICATION PLATFORM_NAME PLATFORM_GUID PLATFORM_VERSION SKUID_IDENTIFIER OUTPUT_DIRECTORY SUPPORTED_ARCHITECTURES BUILD_TARGETS FLASH_DEFINITION BUILD_NUMBER RFC_LANGUAGES ISO_LANGUAGES TIME_STAMP_FILE VPD_TOOL_GUID
 
 " Constants: {{{1
 " "==========
- syn keyword    efiModuleType BASE SEC PEI_CORE PEIM DXE_CORE DXE_DRIVER DXE_SAL_DRIVER DXE_RUNTIME_DRIVER SMM_CORE DXE_SMM_DRIVER UEFI_DRIVER UEFI_APPLICATION
+ syn keyword    efiModuleType BASE SEC PEI_CORE PEIM DXE_CORE DXE_DRIVER DXE_SAL_DRIVER DXE_RUNTIME_DRIVER SMM_CORE DXE_SMM_DRIVER UEFI_DRIVER UEFI_APPLICATION COMBINED_SMM_DXE
  syn keyword    efiTool     MSFT GCC INTEL RVCT XCODE
  syn keyword    efiConst    DEFAULT BUILD RELEASE NULL DEBUG OR AND
 
@@ -87,33 +91,38 @@ if version >= 508 || !exists("did_proto_syn_inits")
     command -nargs=+ HiLink hi def link <args>
   endif
 
-  HiLink efiTodo            Todo         "full yellow
-  HiLink efiType            Type         "green
-  HiLink efiGuid            Identifier   "lignt blue
-  HiLink efiEnv             Identifier   "lignt blue
-  HiLink efiParenthesis     Identifier   "lignt blue
-  HiLink efiSection         Statement    "yellow
-  HiLink efiArchSection     Statement
-  HiLink efiHex             Constant     "red
-  HiLink efiFloat           Constant     "red
-  HiLink efiModuleType      Constant     "red
-  HiLink efiInt             Constant     "red
-  HiLink efiBoolean         Constant     "red
-  HiLink efiString          Constant     "red
-  HiLink efiTool            Constant     "red
-  HiLink efiConst           Constant     "red
-  HiLink efiArchConst       Constant
-  HiLink efiComment         Comment      "blue
-  HiLink efiPreprocessor    Include      "purple
-  hi     efiLib             ctermfg=LightRed
-  hi     efiToken           ctermfg=LightMagenta
-  hi     efiGuidGlobalVar   ctermfg=LightCyan
-  hi     efiPoint           ctermfg=LightBlue
-  hi     efiPath            ctermfg=Gray
-  hi     infDefineSection   ctermfg=DarkGrey
-  hi     decDefineSection   ctermfg=DarkGray
-  hi     dscDefineSection   ctermfg=DarkGray
-  hi     efiSource          ctermfg=LightGreen
+  HiLink efiDefine         Statement
+  HiLink efiTodo           Todo
+  HiLink efiType           Type
+  HiLink efiEnv            Identifier
+  HiLink efiParenthesis    Identifier
+  HiLink efiGuid           Identifier
+  HiLink efiSection        Statement
+  HiLink efiArchSection    Statement
+  HiLink efiHex            Constant
+  HiLink efiFloat          Constant
+  HiLink efiModuleType     Constant
+  HiLink efiInt            Constant
+  HiLink efiBoolean        Constant
+  HiLink efiString         Constant
+  HiLink efiTool           Constant
+  HiLink efiConst          Constant
+  HiLink efiArchConst      Constant
+  HiLink efiComment        Comment
+  HiLink efiPreprocessor   Include
+  HiLink efiImport         Include
+  HiLink dscDefineSection  PreProc
+  HiLink infDefineSection  PreProc
+  HiLink decDefineSection  PreProc
+  HiLink efiLib            Constant
+  " HiLink efiGuidGlobalVar  Identifier
+  HiLink efiPoint          Constant
+  HiLink efiPath           Special
+  HiLink efiSource         Type
+
+  hi     efiGuidGlobalVar  guifg=#87deff ctermfg=117
+  hi     efiTokenSpaceGuid guifg=#7a88cf ctermfg=68
+  hi     efiPcdName        guifg=#a6da95 ctermfg=150
 
   delcommand HiLink
 endif

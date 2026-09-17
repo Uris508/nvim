@@ -38,7 +38,7 @@ syn keyword aslOperators Reset Return Revision Scope ShiftLeft ShiftRight Signal
 syn keyword aslOperators Subtract Switch ThermalZone Timer ToBcd ToBuffer ToDecimalString ToHexString
 syn keyword aslOperators ToInteger ToString ToUuid Unicode Unload Wait While XOr Zero
 
-syn keyword aslKeywords External
+syn keyword aslOperators External
 
 syn keyword aslResources ResourceTemplate RawDataBuffer DMA DWordIO DWordMemory DWordSpace EndDependentFn
 syn keyword aslResources ExtendedIO ExtendedMemory ExtendedSpace FixedDma FixedIO GpioInt GpioIo I2cSerialBus
@@ -46,6 +46,47 @@ syn keyword aslResources I2cSerialBusV2 Interrupt IO IRQ IRQNoFlags Memory24 Mem
 syn keyword aslResources QWordIO QWordMemory QWordSpace Register SpiSerialBus SpiSerialBusV2
 syn keyword aslResources StartDependentFn StartDependentFnNoPri UartSerialBus UartSerialBusV2 VendorLong
 syn keyword aslResources VendorShort WordBusNumber WordIO WordSpace
+
+syn keyword aslKeywords AttribQuick AttribSendReceive AttribByte AttribBytes AttribRawBytes AttribRawProcessBytes AttribWord AttribBlock AttribProcessCall AttribBlockProcessCall
+syn keyword aslKeywords AnyAcc ByteAcc WordAcc DWordAcc QWordAcc BufferAcc
+syn keyword aslKeywords AddressRangeMemory AddressRangeReserved AddressRangeNVS AddressRangeACPI
+syn keyword aslKeywords RegionSpaceKeyword FFixedHW
+syn keyword aslKeywords AddressingMode7Bit AddressingMode10Bit
+syn keyword aslKeywords DataBitsFive DataBitsSix DataBitsSeven DataBitsEight DataBitsNine
+syn keyword aslKeywords BusMaster NotBusMaster
+syn keyword aslKeywords ClockPhaseFirst ClockPhaseSecond
+syn keyword aslKeywords ClockPolarityLow ClockPolarityHigh
+syn keyword aslKeywords SubDecode PosDecode
+syn keyword aslKeywords BigEndianing LittleEndian
+syn keyword aslKeywords AttribBytes AttribRawBytes AttribRawProcessBytes
+syn keyword aslKeywords FlowControlNone FlowControlXon FlowControlHardware
+syn keyword aslKeywords Edge Level
+syn keyword aslKeywords ActiveHigh ActiveLow ActiveBoth
+syn keyword aslKeywords Decode16 Decode10
+syn keyword aslKeywords IoRestrictionNone IoRestrictionInputOnly IoRestrictionOutputOnly IoRestrictionNoneAndPreserve
+syn keyword aslKeywords Lock NoLock
+syn keyword aslKeywords MTR MEQ MLE MLT MGE MGT
+syn keyword aslKeywords MaxFixed MaxNotFixed
+syn keyword aslKeywords Cacheable WriteCombining Prefetchable NonCacheable
+syn keyword aslKeywords MinFixed MinNotFixed
+syn keyword aslKeywords UnknownObj IntObj StrObj BuffObj PkgObj FieldUnitObj DeviceObj EventObj MethodObj MutexObj OpRegionObj PowerResObj ProcessorObj ThermalZoneObj BuffFieldObj DDBHandleObj
+syn keyword aslKeywords ParityTypeNone ParityTypeSpace ParityTypeMark ParityTypeOdd ParityTypeEven
+syn keyword aslKeywords PullDefault PullUp PullDown PullNone
+syn keyword aslKeywords PolarityHigh PolarityLow
+syn keyword aslKeywords ISAOnlyRanges NonISAOnlyRanges EntireRange
+syn keyword aslKeywords ReadWrite ReadOnly
+syn keyword aslKeywords SystemIO SystemMemory PCI_Config EmbeddedControl SMBus SystemCMOS PciBarTarget IPMI GeneralPurposeIO GenericSerialBus PCC
+syn keyword aslKeywords ResourceConsumer ResourceProducer
+syn keyword aslKeywords Serialized NotSerialized
+syn keyword aslKeywords Shared Exclusive SharedAndWake ExclusiveAndWake
+syn keyword aslKeywords ControllerInitiated DeviceInitiated
+syn keyword aslKeywords StopBitsZero StopBitsOne StopBitsOnePlusHalf StopBitsTwo
+syn keyword aslKeywords Width8Bit Width16Bit Width32Bit Width64Bit Width128Bit Width256Bit
+syn keyword aslKeywords SparseTranslation DenseTranslation
+syn keyword aslKeywords TypeTranslation TypeStatic
+syn keyword aslKeywords Preserve WriteAsOnes WriteAsZeros
+syn keyword aslKeywords Transfer8 Transfer16 Transfer8_16
+syn keyword aslKeywords ThreeWireMode FourWireMode
 
 syn keyword aslIncludes Include
 
@@ -55,9 +96,9 @@ hi link aslString String
 hi link aslNumber Number
 hi link aslVariables Identifier
 hi link aslOperators Keyword
-hi link aslKeywords Keyword
 hi link aslResources Type
 hi link aslIncludes Include
+hi aslKeywords guifg=#f9e2af ctermfg=222
 
 " iASL specifics
 syn region iaslInclude start="^\s*\(%:\|#\)\s*include\>\s*["<]" end="$"

@@ -43,6 +43,7 @@ vim.opt.wrap = false
 vim.cmd('colorscheme catppuccin-mocha')
 vim.opt.swapfile = false
 vim.opt.undofile = true
+vim.g.loaded_python3_provider = 0
 
 vim.keymap.set('t', '<C-]>', '<C-\\><C-n>')
 -- 將 :W 映射為 :w

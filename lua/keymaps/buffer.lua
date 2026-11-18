@@ -3,8 +3,9 @@ local function OpenCurrentBufferPath()
   vim.cmd('set noshellslash')
   local path = vim.fn.expand("%:p:h")
   -- vim.print(path)
-  -- return os.execute('explorer ' .. path)
-  return os.execute('start onecommander ' .. '"'.. path .. '"')
+  -- os.execute('start onecommander ' .. '"'.. path .. '"')
+  os.execute('explorer ' .. path)
+  return
 end
 
 local function showcwd()
